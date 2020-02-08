@@ -1,7 +1,7 @@
 {
     "qBD":
     {
-        "q" : "SELECT * FROM user where login=? and password=?",
+        "q" : "SELECT `login`,`password` FROM User where email=? and password=?",
         "task_manager":"SELECT * FROM tasks",
         "task_user":"SELECT * FROM tasks where executor=? and done=0",
         "rem_user":"UPDATE tasks SET done=1 where id=?",
