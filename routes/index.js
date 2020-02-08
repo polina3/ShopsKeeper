@@ -12,19 +12,6 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));
 var rez=[];
 
-app.use(session({
-    key: 'application.sid',
-    secret: 'some.secret.string',
-    cookie: {
-        maxAge: 60 * 60 * 1000,
-        expires: 60 * 60 * 1000
-    },
-    saveUninitialized: true,
-    rolling: true,
-    resave: true,
-    secure: true
-}));
-
 const connection = mysql.createConnection({
 	host: conf.connectionBD.host,
 	user: conf.connectionBD.user,
@@ -57,7 +44,6 @@ router.post('/', function (req, res) {
       	console.log("-");
         return res.render('index',{data:"Непрвильный логин или пароль"});
       }
-      req.session.login=results[0].login+results[0].buy;
       console.log("+");
     });
 });
