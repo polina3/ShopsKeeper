@@ -8,6 +8,8 @@ const fs = require('fs');
 const conf=JSON.parse(fs.readFileSync('config.json'));
 
 var app=express();
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(session({
     key: 'application.sid',
