@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300&display=swap');
+body{
+	padding: 0;
+	margin: 0;
+	bottom: 0;
+}
+.con{
+	height: 100vh;
+	width: 100%;
+	display: grid;
+	grid-template-columns: 1fr 674px;
+}
+.logo{
+	grid-column: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.l{
+	width: 100%;
+	height: 100%;
+	background: url('/static/imges/LOGO.png');
+	background-size: 80%;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+.form{
+	width: 514px;
+}
+.f{
+	grid-column: 2;
+	box-shadow: -19px 0px 38px -16px rgba(0,0,0,0.55);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+form{
+
+	color: #fff;
+}
+h1{
+	font-size: 80px;
+	font-family: 'Open Sans', sans-serif;
+	color: #E66400;
+	text-align: center;
+}
+input{
+	box-sizing: padding-box;
+	padding: 5px;
+	width: 100%;
+	border-radius: 15px;
+	display: block;
+	font-size: 28px;
+	height: 30px;
+	margin: 45px 0;
+	border: 1px solid #E66400;
+}
+input[type="submit"]{
+	padding: 0px;
+	height: 35px;
+	background: #E66400;
+	color: #fff;
+}
+input:focus{
+outline: none;
+}
+input:required:invalid {
+        background: #fae1e1;
+    }
+input:required:valid {
+        background: #e2fae1;
+    }
