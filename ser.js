@@ -21,7 +21,7 @@ app.set("view engine", "pug");
 app.use('/', main);
 app.use('/api', api);
 
- console.log("+");
+ console.log("server run");
 
 
 
