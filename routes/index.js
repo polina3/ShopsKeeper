@@ -54,10 +54,11 @@ router.post('/', function (req, res) {
       }
       console.log(results); 
       if(results.length==0){
+      	console.log("-");
         return res.render('index',{data:"Непрвильный логин или пароль"});
       }
       req.session.login=results[0].login+results[0].buy;
-         
+      console.log("+");
     });
 });
 
