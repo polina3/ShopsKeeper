@@ -66,7 +66,8 @@ router.post('/', function (req, res) {
   else{
     res.send("error");
   }
-  	
 });
-
+router.get('/reg', function (req, res) {
+    res.render("reg",{});
+});
 module.exports = router;
