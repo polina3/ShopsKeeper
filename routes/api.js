@@ -1,6 +1,7 @@
 'use strict';
 var express = require('express');
 var router = express.Router();
+var app=express();
 const mysql = require("mysql2");
 const bodyParser = require("body-parser");
 const fs = require('fs');
@@ -28,9 +29,8 @@ var rez_req="";
 
 
 router.post("/email",(req,res)=>{
-	rez_req=JSON.parse(req.body);
-	console.log(rez_req.email);
-	 connection.query(conf.qBD.q1,rez_req.email,
+	console.log(req.body.email);
+	 connection.query(conf.qBD.q1,req.body.email,
       function(err, results) {
         if(err){
           console.log(err);
@@ -39,10 +39,9 @@ router.post("/email",(req,res)=>{
       if(results.length==0){
         console.log("-");
         return res.send("Такого пользователя нет");
-         
       }
       res.send(true);
-    });
+ 	});
 });
 router.post("/password",(req,res)=>{
 	rez_req=JSON.parse(req.body);
