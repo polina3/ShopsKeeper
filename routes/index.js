@@ -46,8 +46,8 @@ router.post('/', function (req, res) {
          
       }
       let pas="";
-      pas=results;
-      console.log(pas.password);
+      pas=results[0].password;
+      console.log(pas);
       //pas=results.password;
       res.render("index_password",{});
       console.log("log");
