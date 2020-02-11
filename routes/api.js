@@ -29,6 +29,7 @@ var rez_req="";
 
 router.post("/email",(req,res)=>{
 	rez_req=JSON.parse(req.body);
+	console.log(rez_req.email);
 	 connection.query(conf.qBD.q1,rez_req.email,
       function(err, results) {
         if(err){
