@@ -45,7 +45,7 @@ router.post('/', function (req, res) {
         return res.render('index_email',{data:"Такого пользователя нет"});
          
       }
-      console.log(results);
+      console.log(results.TextRow.password);
       pas=results.password;
       res.render("index_password",{});
       console.log("log");
