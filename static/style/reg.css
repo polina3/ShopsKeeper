@@ -2,31 +2,14 @@ body{
 	margin: 0;
 	padding: 0;
 }
-/* Variables
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-:root {
-	--primary-c: #2196F3;
-	--secondary-c: #B2D7F5;
-	
-	--white: #FDFBFB;
-	
-	--text: #082943;	
-	--bg: var(--primary-c);
-}
-
-
-/* Basic Config
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 ul {
 	list-style-type: none;
-	padding-left: 50px;
 	margin: 0;
 }
 
 li {
 	display: block;
-	padding: 20px 0px;
 }
 
 input[type=radio] {
