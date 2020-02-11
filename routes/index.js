@@ -11,6 +11,7 @@ const conf=JSON.parse(fs.readFileSync('config.json'));
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));
+var pas="";
 
 const connection = mysql.createConnection({
   host: conf.connectionBD.host,
@@ -44,24 +45,22 @@ router.post('/', function (req, res) {
         return res.render('index_email',{data:"Такого пользователя нет"});
          
       }
+      pas=results.password;
       res.render("index_password",{});
       console.log("log");
     });
   }
   else if(req.body.password){
-    connection.query(conf.qBD.q2,req.body.password,
-      function(err, results) {
-        if(err){
-          console.log(err);
-          return res.render('index_password',{data:"error"});
+      if(res.body.password==pas){
+        return res.send("ok");
+        console.log("pas")
       }
-      if(results.length==0){
-        console.log("-");
+      else{
         return res.render('index_password',{data:"Неправильнеый пароль "});
       }
-      res.send("ok");
-      console.log("pas");
-    });
+
+     
+
   }
   else{
     res.send("error");

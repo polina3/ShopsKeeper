@@ -38,14 +38,13 @@ router.post("/email",(req,res)=>{
       }
       if(results.length==0){
         console.log("-");
-        return res.send("Такого пользователя нет");
+        return res.send(false);
       }
       res.send(true);
  	});
 });
 router.post("/password",(req,res)=>{
-	rez_req=JSON.parse(req.body);
-	 connection.query(conf.qBD.q1,rez_req.password,
+	 connection.query(conf.qBD.q2,req.body.password,
       function(err, results) {
         if(err){
           console.log(err);
@@ -53,7 +52,7 @@ router.post("/password",(req,res)=>{
       }
       if(results.length==0){
         console.log("-");
-        return res.send("Неправильнеый пароль");
+        return res.send(false);
          
       }
       res.send(true);
