@@ -31,6 +31,12 @@ form{
 
 	color: #fff;
 }
+p{
+	color:red;
+	text-align: center;
+	font-size: 50px;
+	font-family: 'Open Sans', sans-serif;
+}
 h1{
 	font-size: 80px;
 	font-family: 'Open Sans', sans-serif;
