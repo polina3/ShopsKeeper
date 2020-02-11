@@ -54,12 +54,12 @@ router.post('/', function (req, res) {
     });
   }
   else if(req.body.password){
-      if(req.body.password==pas){
+      if(req.body.password==pass){
         return res.send("ok");
         console.log("pas")
       }
       else{
-        return res.render('index_password',{data:"Неправильнеый пароль "});
+        return ress.render('index_password',{data:"Неправильнеый пароль "});
       }
 
      
