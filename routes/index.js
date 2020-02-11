@@ -11,7 +11,7 @@ const conf=JSON.parse(fs.readFileSync('config.json'));
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));
-var pas="";
+var pass="";
 
 const connection = mysql.createConnection({
   host: conf.connectionBD.host,
@@ -47,7 +47,7 @@ router.post('/', function (req, res) {
       }
       let pas="";
       pas=results[0];
-      console.log(pas.password);
+      pass=pas.password;
       //pas=results.password;
       res.render("index_password",{});
       console.log("log");
