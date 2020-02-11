@@ -58,8 +58,8 @@ router.post('/', function (req, res) {
       if(results.length==0){
         console.log("-");
         return res.render('index',{data:"Неправильнеый логин"});
-         res.send("ok");
       }
+      res.send("ok");
       console.log("+");
     });
   }
