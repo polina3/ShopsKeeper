@@ -29,23 +29,43 @@ connection.connect(function(err){
  });
 
 router.get('/', function (req, res) {
-    res.render("index",{});
+    res.render("index_email",{});
 });
 router.post('/', function (req, res) {
-    rez=[req.body.login,req.body.password];
-  	connection.query(conf.qBD.q,rez,
-    function(err, results) {
-      if(err){
-        console.log(err);
-        return res.render('index',{data:"error"});
+  if(req.body.login){
+    connection.query(conf.qBD.q1,req.body.login,
+      function(err, results) {
+        if(err){
+          console.log(err);
+          return res.render('index',{data:"error"});
       }
-      console.log(results); 
       if(results.length==0){
-      	console.log("-");
-        return res.render('index',{data:"Непрвильный логин или пароль"});
+        console.log("-");
+        return res.render('index',{data:"Такого пользователя нет"});
+         res.render("index_password",{});
       }
       console.log("+");
     });
+  }
+  else if(req.body.password){
+    connection.query(conf.qBD.q2,req.body.password,
+      function(err, results) {
+        if(err){
+          console.log(err);
+          return res.render('index',{data:"error"});
+      }
+      if(results.length==0){
+        console.log("-");
+        return res.render('index',{data:"Неправильнеый логин"});
+         res.send("ok");
+      }
+      console.log("+");
+    });
+  }
+  else{
+
+  }
+  	
 });
 
 module.exports = router;
