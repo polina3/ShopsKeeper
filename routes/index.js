@@ -42,8 +42,9 @@ router.post('/', function (req, res) {
       if(results.length==0){
         console.log("-");
         return res.render('index',{data:"Такого пользователя нет"});
-         res.render("index_password",{});
+         
       }
+      res.render("index_password",{});
       console.log("+");
     });
   }
