@@ -37,15 +37,15 @@ router.post('/', function (req, res) {
       function(err, results) {
         if(err){
           console.log(err);
-          return res.render('index',{data:"error"});
+          return res.render('index_email',{data:"error"});
       }
       if(results.length==0){
         console.log("-");
-        return res.render('index',{data:"Такого пользователя нет"});
+        return res.render('index_email',{data:"Такого пользователя нет"});
          
       }
       res.render("index_password",{});
-      console.log("+");
+      console.log("log");
     });
   }
   else if(req.body.password){
@@ -53,14 +53,14 @@ router.post('/', function (req, res) {
       function(err, results) {
         if(err){
           console.log(err);
-          return res.render('index',{data:"error"});
+          return res.render('index_password',{data:"error"});
       }
       if(results.length==0){
         console.log("-");
-        return res.render('index',{data:"Неправильнеый логин"});
+        return res.render('index_password',{data:"Неправильнеый логин"});
       }
       res.send("ok");
-      console.log("+");
+      console.log("pas");
     });
   }
   else{
