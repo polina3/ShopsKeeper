@@ -32,8 +32,8 @@ router.get('/', function (req, res) {
     res.render("index_email",{});
 });
 router.post('/', function (req, res) {
-  if(req.body.login){
-    connection.query(conf.qBD.q1,req.body.login,
+  if(req.body.email){
+    connection.query(conf.qBD.q1,req.body.email,
       function(err, results) {
         if(err){
           console.log(err);
@@ -63,7 +63,7 @@ router.post('/', function (req, res) {
     });
   }
   else{
-
+    res.send("error");
   }
   	
 });
