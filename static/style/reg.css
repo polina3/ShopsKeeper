@@ -7,7 +7,6 @@ body{
 	height: 100vh;
 	background: #E66400;
 	display: grid;
-	grid-template-rows: 0;
 	grid-template-columns: 1fr 950px;
 
 }
