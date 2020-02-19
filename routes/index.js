@@ -92,7 +92,7 @@ router.get('/reg', function (req, res) {
     res.render("reg",{});
 });
 
-connection.end();
+
 
 
 
