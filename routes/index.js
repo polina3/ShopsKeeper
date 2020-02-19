@@ -20,6 +20,19 @@ const connection = mysql.createConnection({
   password: conf.connectionBD.password
   });
 
+app.use(session({
+    secret: 'secretWord',   // секретное слово для шифрования
+    key: 'key',             // имя куки
+    cookie: {
+        path: '/',          // где действует
+        httpOnly: true,     // чтобы куку не могли читать на клиенте
+        maxAge: null        // время жизни куки
+    },
+    saveUninitialized: false,   // on default
+    resave: false               // on  default
+}));
+
+
 connection.connect(function(err){
     if (err) {
       return console.error("Ошибка: " + err.message);
