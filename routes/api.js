@@ -25,7 +25,6 @@ connection.connect(function(err){
       console.log("Подключение к серверу MySQL успешно установлено");
     }
  });
-var rez_req="";
 
 
 router.post("/email",(req,res)=>{
@@ -38,9 +37,9 @@ router.post("/email",(req,res)=>{
       }
       if(results.length==0){
         console.log("-");
-        return res.send(false);
+        return res.send(JSON.stringify(res:false));
       }
-      res.send(true);
+      res.send(JSON.stringify(res:true));
  	});
 });
 router.post("/password",(req,res)=>{
@@ -53,11 +52,12 @@ router.post("/password",(req,res)=>{
       }
       if(results.length==0){
         console.log("-");
-        return res.send(false);  
+        return res.send(JSON.stringify(res:false));  
       }
-      res.send(true);
+      res.send(JSON.stringify(res:true));
     });
 });
 
+connection.end();
 
 module.exports = router;

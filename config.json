@@ -12,8 +12,7 @@
     
     "connectionBD":
     {
-        
-        "host": "localhost",
+        "host": "45.67.57.219",
 	    "user": "root",
 	    "database": "SK",
 	    "password": "12345"

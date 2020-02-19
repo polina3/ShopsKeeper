@@ -7,7 +7,8 @@ const bodyParser = require("body-parser");
 const session = require('express-session');
 const fs = require('fs');
 const conf=JSON.parse(fs.readFileSync('config.json'));
-
+const redis   = require('redis'),
+const client  = redis.createClient();
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -28,6 +29,18 @@ connection.connect(function(err){
     }
  });
 
+app.use(
+  session({
+    store: new redisStorage({
+      host:  conf.connectionBD.host,
+      port: conf.port,
+      client: client
+    }),
+    secret: '12345',
+    saveUninitialized: false
+  })
+);
+
 router.get('/', function (req, res) {
     res.render("index_email",{});
 });
@@ -44,8 +57,9 @@ router.post('/', function (req, res) {
         console.log("-");
         return res.render('index_email',{data:"Такого пользователя нет"});
       }
+      req.session.email=results[0].email;
       res.render("index_password",{});
-      console.log("log");
+      console.log(req.session.email);
     });
   }
   else if(req.body.password){
