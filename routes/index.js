@@ -88,7 +88,7 @@ router.post('/', function (req, res) {
 
 router.get('/reg', function (req, res) {
     res.render("reg",{});
-});
+})
 
 
 
