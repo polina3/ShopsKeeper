@@ -39,6 +39,14 @@ app.use(session({
     secure: true
 }));
 
+let checkSignIn = (req, res, next) => {
+    if (req.session.email) {   
+        next();
+    } else {
+        res.redirect("/login");
+    }
+}
+
 router.get('/', function (req, res) {
     req.session.email='' ;
     res.render("index_email",{});
