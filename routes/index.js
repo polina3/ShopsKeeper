@@ -7,7 +7,7 @@ const bodyParser = require("body-parser");
 const session = require('express-session');
 const fs = require('fs');
 const conf=JSON.parse(fs.readFileSync('config.json'));
-const redis   = require('redis'),
+const redis   = require('redis');
 var client  = redis.createClient();
 
 app.use(bodyParser.json())
