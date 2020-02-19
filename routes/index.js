@@ -40,6 +40,7 @@ app.use(session({
 }));
 
 router.get('/', function (req, res) {
+    req.session.login='' ;
     res.render("index_email",{});
 });
 
