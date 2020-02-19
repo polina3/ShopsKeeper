@@ -8,7 +8,7 @@ const session = require('express-session');
 const fs = require('fs');
 const conf=JSON.parse(fs.readFileSync('config.json'));
 const redis   = require('redis'),
-const client  = redis.createClient();
+var client  = redis.createClient();
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));
