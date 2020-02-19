@@ -27,16 +27,15 @@ connection.connect(function(err){
  });
 
 app.use(session({
-    key: 'application.sid',
-    secret: 'some.secret.string',
+    secret: 'secretWord',   // секретное слово для шифрования
+    key: 'key',             // имя куки
     cookie: {
-        maxAge: 60 * 60 * 1000,
-        expires: 60 * 60 * 1000
+        path: '/',          // где действует
+        httpOnly: true,     // чтобы куку не могли читать на клиенте
+        maxAge: null        // время жизни куки
     },
-    saveUninitialized: true,
-    rolling: true,
-    resave: true,
-    secure: true
+    saveUninitialized: false,   // on default
+    resave: false               // on  default
 }));
 
 let checkSignIn = (req, res, next) => {
@@ -63,7 +62,8 @@ router.post('/', function (req, res) {
         console.log("-");
         return res.render('index_email',{data:"Такого пользователя нет"});
       }
-      req.session.e=results[0].email;
+      const users = results;
+      req.session.e=users[0].email;
       res.render("index_password",{});
       console.log(req.session.email);
     });
