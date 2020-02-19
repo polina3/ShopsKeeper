@@ -13,7 +13,7 @@ var app=express();
 const conf=JSON.parse(fs.readFileSync('config.json'));
 
 
-
+app.use(express.session());
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));
 
