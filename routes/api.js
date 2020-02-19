@@ -26,21 +26,24 @@ connection.connect(function(err){
     }
  });
 
-
+var r={
+  response:""
+};
 router.post("/email",(req,res)=>{
 	console.log(req.body.email);
 	 connection.query(conf.qBD.q1,req.body.email,
       function(err, results) {
         if(err){
           console.log(err);
-          return res.send("error");
+          r.response="error";
       }
       if(results.length==0){
         console.log("-");
-        return res.send(JSON.stringify(r:false));
+        r.response="false";
       }
-      res.send(JSON.stringify(r:true));
+      r.response="true";
  	});
+   res.send(JSON.stringify(r));
 });
 router.post("/password",(req,res)=>{
   let rez=[req.body.email,req.body.password];
@@ -48,14 +51,15 @@ router.post("/password",(req,res)=>{
       function(err, results) {
         if(err){
           console.log(err);
-          return res.send("error");
+           r.response="error";
       }
       if(results.length==0){
         console.log("-");
-        return res.send(JSON.stringify(r:false));  
+         r.response="false";
       }
-      res.send(JSON.stringify(r:true));
+      r.response="true";
     });
+   res.send(JSON.stringify(r));
 });
 
 connection.end();
