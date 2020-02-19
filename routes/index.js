@@ -7,12 +7,12 @@ const bodyParser = require("body-parser");
 const session = require('express-session');
 const fs = require('fs');
 const conf=JSON.parse(fs.readFileSync('config.json'));
-var connection = require('./modul/connect');
+
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));
 
-/*const connection = mysql.createConnection({
+const connection = mysql.createConnection({
   host: conf.connectionBD.host,
   user: conf.connectionBD.user,
   database: conf.connectionBD.database,
@@ -26,7 +26,7 @@ connection.connect(function(err){
     else{
       console.log("Подключение к серверу MySQL успешно установлено");
     }
- });*/
+ });
 
 router.get('/', function (req, res) {
     res.render("index_email",{});
@@ -43,6 +43,7 @@ router.post('/', function (req, res) {
       if(results.length==0){
         console.log("-");
         return res.render('index_email',{data:"Такого пользователя нет"});
+         
       }
       res.render("index_password",{});
       console.log("log");
@@ -56,6 +57,9 @@ router.post('/', function (req, res) {
       else{
         return ress.render('index_password',{data:"Неправильнеый пароль "});
       }
+
+     
+
   }
   else{
     res.send("error");
@@ -79,9 +83,12 @@ router.post('/', function (req, res) {
 router.get('/reg', function (req, res) {
     res.render("reg",{});
 });
+<<<<<<< HEAD
 
 connection.end();
 
 
 
+=======
+>>>>>>> parent of 9d10357... connect
 module.exports = router;
