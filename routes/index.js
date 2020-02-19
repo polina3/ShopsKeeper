@@ -43,7 +43,6 @@ router.post('/', function (req, res) {
       if(results.length==0){
         console.log("-");
         return res.render('index_email',{data:"Такого пользователя нет"});
-         
       }
       res.render("index_password",{});
       console.log("log");
@@ -57,9 +56,6 @@ router.post('/', function (req, res) {
       else{
         return ress.render('index_password',{data:"Неправильнеый пароль "});
       }
-
-     
-
   }
   else{
     res.send("error");
@@ -83,12 +79,9 @@ router.post('/', function (req, res) {
 router.get('/reg', function (req, res) {
     res.render("reg",{});
 });
-<<<<<<< HEAD
 
 connection.end();
 
 
 
-=======
->>>>>>> parent of 9d10357... connect
 module.exports = router;
