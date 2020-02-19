@@ -7,8 +7,7 @@ const bodyParser = require("body-parser");
 const session = require('express-session');
 const fs = require('fs');
 const conf=JSON.parse(fs.readFileSync('config.json'));
-var c = require('./modul/connect');
-var connection=c.con();
+var connection = require('./modul/connect');
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));
 

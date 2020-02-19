@@ -2,8 +2,8 @@ const mysql = require("mysql2");
 const fs = require('fs');
 const conf=JSON.parse(fs.readFileSync('/config.json'));
 
- module.exports.con=()=>{
- 	const connection = mysql.createConnection({
+var con=()=>{
+	const connection = mysql.createConnection({
   		host: conf.connectionBD.host,
  		user: conf.connectionBD.user,
   		database: conf.connectionBD.database,
@@ -19,6 +19,9 @@ const conf=JSON.parse(fs.readFileSync('/config.json'));
     	}
  	});
  	return connection;
- }
+}
+ module.exports=con;
+ 	
+ 
 
 
