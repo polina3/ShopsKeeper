@@ -14,7 +14,7 @@ const conf=JSON.parse(fs.readFileSync('config.json'));
 
 
 
-app.use(bodyParser.json())
+/*app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cookieParser());
@@ -24,7 +24,7 @@ app.set("view engine", "pug");
 app.use('/', main);
 app.use('/api', api);
 
- console.log("server run");
+ console.log("server run");*/
 
 
 
