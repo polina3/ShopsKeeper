@@ -69,3 +69,11 @@ input:required:invalid {
 input:required:valid {
         background: #e2fae1;
     }
+a{
+	width: 100%;
+	text-decoration: none;
+	font-size: 35px;
+	font-family: 'Open Sans', sans-serif;
+	color: #E66400;
+	text-align: center;
+}

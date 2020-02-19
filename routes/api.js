@@ -44,7 +44,8 @@ router.post("/email",(req,res)=>{
  	});
 });
 router.post("/password",(req,res)=>{
-	 connection.query(conf.qBD.q2,req.body.password,
+  let rez=[req.body.email,req.body.password];
+	 connection.query(conf.qBD.q2,rez,
       function(err, results) {
         if(err){
           console.log(err);
@@ -52,8 +53,7 @@ router.post("/password",(req,res)=>{
       }
       if(results.length==0){
         console.log("-");
-        return res.send(false);
-         
+        return res.send(false);  
       }
       res.send(true);
     });
