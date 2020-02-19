@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser');
 const fs = require('fs');
 var main = require('./routes/index');
 var api = require('./routes/api');
+var connection = require('./modul/connect');
 
 var app=express();
 const conf=JSON.parse(fs.readFileSync('config.json'));
