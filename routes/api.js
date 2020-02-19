@@ -44,6 +44,7 @@ router.post("/email",(req,res)=>{
       r.response="true";
  	});
    res.send(JSON.stringify(r));
+   connection.end();
 });
 router.post("/password",(req,res)=>{
   let rez=[req.body.email,req.body.password];
@@ -60,8 +61,9 @@ router.post("/password",(req,res)=>{
       r.response="true";
     });
    res.send(JSON.stringify(r));
+   connection.end();
 });
 
-connection.end();
+
 
 module.exports = router;

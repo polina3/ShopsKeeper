@@ -69,17 +69,6 @@ router.post('/', function (req, res) {
     });
   }
   else if(req.body.password){
-      if(req.body.password==pass){
-        return res.send("ok");
-        console.log("pas")
-      }
-      else{
-        return ress.render('index_password',{data:"Неправильнеый пароль "});
-      }
-  }
-  else{
-    res.send("error");
-  }
      connection.query(conf.qBD.q2,req.body.password,
      	function(err, results) {
         	if(err){
@@ -93,8 +82,9 @@ router.post('/', function (req, res) {
           else{
             res.send("ok");
           }
- });
-   });
+      });
+     connection.end();
+   };
 
 router.get('/reg', function (req, res) {
     res.render("reg",{});
