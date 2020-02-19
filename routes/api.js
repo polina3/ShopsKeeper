@@ -37,9 +37,9 @@ router.post("/email",(req,res)=>{
       }
       if(results.length==0){
         console.log("-");
-        return res.send(JSON.stringify(res:false));
+        return res.send(JSON.stringify(r:false));
       }
-      res.send(JSON.stringify(res:true));
+      res.send(JSON.stringify(r:true));
  	});
 });
 router.post("/password",(req,res)=>{
@@ -52,9 +52,9 @@ router.post("/password",(req,res)=>{
       }
       if(results.length==0){
         console.log("-");
-        return res.send(JSON.stringify(res:false));  
+        return res.send(JSON.stringify(r:false));  
       }
-      res.send(JSON.stringify(res:true));
+      res.send(JSON.stringify(r:true));
     });
 });
 
