@@ -74,10 +74,12 @@ router.post('/', function (req, res) {
             res.send("ok");
           }
  });
+   });
 
 router.get('/reg', function (req, res) {
     res.render("reg",{});
 });
+
 connection.end();
 
 
