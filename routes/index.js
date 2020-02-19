@@ -7,9 +7,6 @@ const bodyParser = require("body-parser");
 const session = require('express-session');
 const fs = require('fs');
 const conf=JSON.parse(fs.readFileSync('config.json'));
-const redis   = require('redis');
-var client  = redis.createClient();
-
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -29,17 +26,18 @@ connection.connect(function(err){
     }
  });
 
-app.use(
-  session({
-    store: new redisStorage({
-      host:  conf.connectionBD.host,
-      port: conf.port,
-      client: client
-    }),
-    secret: '12345',
-    saveUninitialized: false
-  })
-);
+app.use(session({
+    key: 'application.sid',
+    secret: 'some.secret.string',
+    cookie: {
+        maxAge: 60 * 60 * 1000,
+        expires: 60 * 60 * 1000
+    },
+    saveUninitialized: false,
+    rolling: true,
+    resave: true,
+    secure: true
+}));
 
 router.get('/', function (req, res) {
     res.render("index_email",{});
