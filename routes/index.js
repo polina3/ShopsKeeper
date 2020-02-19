@@ -33,7 +33,7 @@ app.use(session({
         maxAge: 60 * 60 * 1000,
         expires: 60 * 60 * 1000
     },
-    saveUninitialized: false,
+    saveUninitialized: true,
     rolling: true,
     resave: true,
     secure: true
