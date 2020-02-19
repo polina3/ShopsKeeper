@@ -48,7 +48,6 @@ let checkSignIn = (req, res, next) => {
 }
 
 router.get('/', function (req, res) {
-    req.session.email='' ;
     res.render("index_email",{});
 });
 
