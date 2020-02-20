@@ -81,12 +81,13 @@ router.post('/', function (req, res) {
 });
 
 
-router.get('/password',isEmail, function (req, res) {
+router.get('/password',isEmail(req, res), function (req, res) {
+    console.log(req.session.email);
     res.render("index_password",{});
 });
 
-router.post('/password',isEmail, function (req, res) {
-  console.log(req.session.email);
+router.post('/password', function (req, res) {
+  
   let data=[req.session.email,req.body.password];
    pool.execute(conf.qBD.q2,data,(err, results)=>{
     if(err){
