@@ -5,9 +5,9 @@ const session = require('express-session');
 const bodyParser = require("body-parser");
 var main = require('./routes/index');
 var api = require('./routes/api');
+const conf=require('./my_module/config');
 
-
-var app=express();
+/*var app=express();
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -18,7 +18,7 @@ app.set("view engine", "pug");
 app.use('/', main);
 app.use('/api', api);
 
- console.log("server run");
+ console.log("server run");*/
 
 
 
