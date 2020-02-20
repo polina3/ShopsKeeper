@@ -6,7 +6,7 @@ var router = express.Router();
 var app=express();
 //-------подключение роутеров--------------------
 var main = require('./routes/index');
-//var api = require('./routes/api');
+var api = require('./routes/api');
 const fs = require('fs');
 const conf=JSON.parse(fs.readFileSync('config.json'));
 //---------------------------
