@@ -25,7 +25,8 @@ app.use(session({
     key: 'session_cookie_name',
     secret: 'session_cookie_secret',
     store: new SessionStore(options),
-    saveUninitialized: true
+    saveUninitialized: true,
+    resave:false
 }))
 
 //---------------------------
