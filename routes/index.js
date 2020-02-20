@@ -10,7 +10,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));
 //---------------------------
 const fs = require('fs');
-const conf=JSON.parse(fs.readFileSync('config.json'));
+const conf=JSON.parse(fs.readFileSync('./config.json'));
 //---------------------------
 
 const pool = mysql.createPool({
@@ -42,7 +42,7 @@ router.get('/', function (req, res) {
 });
 
 router.post('/', function (req, res) {
-  pool.execute(conf.qBD.q1,req.body.email,(err, results)=>{
+  pool.execute(conf.qBD.q1,[req.body.email],(err, results)=>{
     if(err){
           console.log(err);
           return res.render('index_email',{data:"error"});
