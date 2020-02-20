@@ -7,9 +7,9 @@ const bodyParser = require("body-parser");
 //var api = require('./routes/api');
 const conf=require('./config');
 
-/*var app=express();
+var app=express();
 
-app.use(bodyParser.json())
+/*app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
