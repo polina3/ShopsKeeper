@@ -13,7 +13,7 @@ app.use("/static",express.static('static'));
 
 app.set("view engine", "pug");
 app.use('/', main);
-app.use('/api', api);
+//app.use('/api', api);
 
 console.log("server run");
 
