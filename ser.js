@@ -3,8 +3,11 @@ var main = require('./routes/index');
 //var api = require('./routes/api');
 const fs = require('fs');
 const conf=JSON.parse(fs.readFileSync('config.json'));
-
-
+//---------------------------
+const bodyParser = require("body-parser");
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }));
+//---------------------------
 var app=express();
 
 
