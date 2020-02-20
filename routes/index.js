@@ -67,7 +67,9 @@ router.post('/', function (req, res) {
   pool.execute(conf.qBD.q1,[req.body.email],(err, results)=>{
     if(err){
           console.log(err);
+          P_END(pool);
           return res.render('index_email',{data:"error"});
+
       }
      if(results.length==0){
         console.log("-e");
@@ -75,9 +77,10 @@ router.post('/', function (req, res) {
       }
       console.log(results[0].email);
       req.session.email=results[0].email;
+      P_END(pool);
       res.redirect('/password');
   })   
-  P_END(pool);       
+     
 });
 
 
