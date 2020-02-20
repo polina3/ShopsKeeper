@@ -14,14 +14,17 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const fs = require('fs');
 const conf=JSON.parse(fs.readFileSync('./config.json'));
 //-------настройка session--------------------
-app.use(session({
-    key: 'session_cookie_name',
-    secret: 'session_cookie_secret',
-    store: new SessionStore(
+var options = {
     host: conf.connectionBD.host,
     user: conf.connectionBD.user,
     database: conf.connectionBD.database,
-    password: conf.connectionBD.password)
+    password: conf.connectionBD.password
+}
+
+app.use(session({
+    key: 'session_cookie_name',
+    secret: 'session_cookie_secret',
+    store: new SessionStore(options)
 }))
 
 //---------------------------
