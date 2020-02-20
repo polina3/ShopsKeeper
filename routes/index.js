@@ -1,24 +1,29 @@
-var express = require('express');
+const express = require('express');
 var router = express.Router();
 var app=express();
 const mysql = require("mysql2");
 const bodyParser = require("body-parser");
-const conf=require('/my_modul/config');
+const fs = require('fs');
+const conf=JSON.parse(fs.readFileSync('config.json'));
 
-const connection = mysql.createConnection({
-  host: conf.connectionBD.host,
-  user: conf.connectionBD.user,
-  database: conf.connectionBD.database,
-  password: conf.connectionBD.password
-  });
+const pool = mysql.createPool({
+    connectionLimit: 500,
+    queueLimit:300,
+    waitForConnections:true,
+    acquireTimeout:60000,
 
-connection.connect(function(err){
-    if (err) {
-      return console.error("Ошибка: " + err.message);
-    }
-    else{
-      console.log("Подключение к серверу MySQL успешно установлено");
-    }
- });
+    host: conf.connectionBD.host,
+    user: conf.connectionBD.user,
+    database: conf.connectionBD.database,
+    password: conf.connectionBD.password
+});
+
+pool.getConnection((err,connection)=>{
+  if(err){
+    connection.release();
+    console.log(err);
+  }
+  console.log("SQL")
+});
 
 module.exports = router;
