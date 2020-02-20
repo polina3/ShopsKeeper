@@ -22,37 +22,38 @@ const pool = mysql.createPool({
     user: conf.connectionBD.user,
     database: conf.connectionBD.database,
     password: conf.connectionBD.password
-}).promise();
+});
 
-pool.getConnection()
-    .then(connection=>{
-          console.log("SQL");
-          connection.release();
-    })
-    .catch((connection,err)=>{
-      console.log(err);
+pool.getConnection((connection,err)=>{
+  if(err){
+       console.log(err);
       connection.release();
+  }
+  else{
+     console.log("OK_SQL");
+      connection.release();
+  }
+     
     })
+
 
 router.get('/', function (req, res) {
     res.render("index_email",{});
 });
 
 router.post('/', function (req, res) {
-  pool.execute(conf.qBD.q1,req.body.email)
-          .then(result =>{
-            if(results.length==0){
-              console.log("-e");
-              res.render('index_email',{data:"Такого пользователя нет"});
-            }
-            else{
-              console.log("+e");
-              res.redirect("/password");
-            }  
-          })
-          .catch(function(err) {
-            console.log(err);
-          });
+  pool.execute(conf.qBD.q1,req.body.email,(err, results)=>{
+    if(err){
+          console.log(err);
+          return res.render('index_email',{data:"error"});
+      }
+     if(results.length==0){
+        console.log("-e");
+        return res.render('index_email',{data:"Такого пользователя нет"});
+      }
+      console.log(results[0].email);
+      res.redirect('/password');
+  })          
 });
 
 
