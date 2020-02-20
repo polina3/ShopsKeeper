@@ -15,7 +15,7 @@ const pool = mysql.createPool({
     user: conf.connectionBD.user,
     database: conf.connectionBD.database,
     password: conf.connectionBD.password
-});
+}).promise();
 
 pool.getConnection((err,connection)=>{
   if(err){
@@ -24,5 +24,36 @@ pool.getConnection((err,connection)=>{
   }
   console.log("SQL")
 });
+
+router.get('/email', function (req, res) {
+    res.render("index_email",{});
+});
+
+router.post('/email', function (req, res) {
+  pool.execute(conf.qBD.q1,req.body.email)
+          .then(result =>{
+            if(results.length==0){
+              console.log("-e");
+              res.render('index_email',{data:"Такого пользователя нет"});
+            }
+            else{
+              console.log("+e");
+              res.redirect("/password");
+            }  
+          })
+          .catch(function(err) {
+            console.log(err);
+          });
+});
+
+
+/*router.get('/password', function (req, res) {
+    res.render("index_password",{});
+});
+
+router.post('/password', function (req, res) {
+    res.render("index_password",{});
+});
+*/
 
 module.exports = router;
