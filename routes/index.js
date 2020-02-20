@@ -3,7 +3,7 @@ var router = express.Router();
 var app=express();
 const mysql = require("mysql2");
 const bodyParser = require("body-parser");
-const conf=require("./modul/config");
+const conf=require("./my_module/config");
 
 const connection = mysql.createConnection({
   host: conf.connectionBD.host,
@@ -20,3 +20,5 @@ connection.connect(function(err){
       console.log("Подключение к серверу MySQL успешно установлено");
     }
  });
+
+module.exports = router;
