@@ -5,7 +5,7 @@ const session = require('express-session');
 const bodyParser = require("body-parser");
 var main = require('./routes/index');
 var api = require('./routes/api');
-const conf=require('./my_module/config');
+const conf=require('./config');
 
 /*var app=express();
 
