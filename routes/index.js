@@ -64,24 +64,24 @@ router.post('/', function (req, res) {
   }
   else if(req.body.password){
     if(req.session.email='' || !req.session.email){
-      res.render("index_password",{});
+      res.render("index_email",{});
     }
-    let rez=[req.session.email,req.body.password];
-   connection.query(conf.qBD.q2,rez,
-      function(err, results) {
-        if(err){
-          console.log(err);
-          return res.render('index_password',{data:"error"});
-      }
-      if(results.length==0){
-        console.log("-");
-        return res.render('index_password',{data:"неверный пароль"});
-      }
-      res.send("Ok");
-    });
-   connection.end();
-  }
-});
+      let rez=[req.session.email,req.body.password];
+     connection.query(conf.qBD.q2,rez,
+        function(err, results) {
+          if(err){
+            console.log(err);
+            return res.render('index_password',{data:"error"});
+        }
+        if(results.length==0){
+          console.log("-");
+          return res.render('index_password',{data:"неверный пароль"});
+        }
+        res.send("Ok");
+      });
+     connection.end();
+    }
+  });
 
 router.get('/reg', function (req, res) {
     res.render("reg",{});
