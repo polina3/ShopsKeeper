@@ -1,10 +1,17 @@
+//---------------------------
 const express = require('express');
 var router = express.Router();
 var app=express();
+//---------------------------
 const mysql = require("mysql2");
+//---------------------------
 const bodyParser = require("body-parser");
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }));
+//---------------------------
 const fs = require('fs');
 const conf=JSON.parse(fs.readFileSync('config.json'));
+//---------------------------
 
 const pool = mysql.createPool({
     connectionLimit: 500,
@@ -17,13 +24,17 @@ const pool = mysql.createPool({
     password: conf.connectionBD.password
 }).promise();
 
-pool.getConnection((err,connection)=>{
-  if(err){
-    connection.release();
-    console.log(err);
-  }
-  console.log("SQL")
-});
+pool.getConnection()
+    .then(connection=>{
+        if(err){
+          console.log("SQL");
+          connection.release();
+        }
+    })
+    .catch((connection,err)=>{
+      console.log(err);
+      connection.release();
+    })
 
 router.get('/', function (req, res) {
     res.render("index_email",{});
@@ -47,11 +58,11 @@ router.post('/', function (req, res) {
 });
 
 
-/*router.get('/password', function (req, res) {
+router.get('/password', function (req, res) {
     res.render("index_password",{});
 });
 
-router.post('/password', function (req, res) {
+/*router.post('/password', function (req, res) {
     res.render("index_password",{});
 });
 */
