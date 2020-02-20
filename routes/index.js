@@ -68,8 +68,6 @@ router.post('/', function (req, res) {
     if(err){
           console.log(err);
           return res.render('index_email',{data:"error"});
-          P_END(pool);
-
       }
      if(results.length==0){
         console.log("-e");
@@ -78,7 +76,6 @@ router.post('/', function (req, res) {
       console.log(results[0].email);
       req.session.email=results[0].email;
       res.redirect('/password');
-      P_END(pool);
   })   
      
 });
@@ -102,8 +99,7 @@ router.post('/password', function (req, res) {
         return res.render('index_password',{data:"неверный пароль"});
       }
     res.send("Ok");
-  })   
-  P_END(pool);           
+  })          
 });
 //---------------------------
 
