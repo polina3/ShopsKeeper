@@ -25,11 +25,11 @@ pool.getConnection((err,connection)=>{
   console.log("SQL")
 });
 
-router.get('/email', function (req, res) {
+router.get('/', function (req, res) {
     res.render("index_email",{});
 });
 
-router.post('/email', function (req, res) {
+router.post('/', function (req, res) {
   pool.execute(conf.qBD.q1,req.body.email)
           .then(result =>{
             if(results.length==0){
