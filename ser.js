@@ -3,8 +3,8 @@ const mysql = require("mysql2");
 var path = require('path');
 const session = require('express-session');
 const bodyParser = require("body-parser");
-var main = require('./routes/index');
-var api = require('./routes/api');
+//var main = require('./routes/index');
+//var api = require('./routes/api');
 const conf=require('./config');
 
 /*var app=express();
