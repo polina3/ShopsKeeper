@@ -86,6 +86,7 @@ router.get('/password', function (req, res) {
 });
 
 router.post('/password',isEmail, function (req, res) {
+  console.log(req.session.email);
   let data=[req.session.email,req.body.password];
    pool.execute(conf.qBD.q2,data,(err, results)=>{
     if(err){
