@@ -75,6 +75,7 @@ router.post('/', function (req, res) {
       }
       console.log(results[0].email);
       req.session.email=results[0].email;
+      console.log(req.session.email);
       res.redirect('/password');
   })   
      
