@@ -81,7 +81,7 @@ router.post('/', function (req, res) {
 });
 
 
-router.get('/password',isEmail(req, res), function (req, res) {
+router.get('/password',isEmail, function (req, res) {
     console.log(req.session.email);
     res.render("index_password",{});
 });
