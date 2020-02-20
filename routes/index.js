@@ -9,8 +9,7 @@ const conf=JSON.parse(fs.readFileSync('config.json'));
 const pool = mysql.createPool({
     connectionLimit: 500,
     queueLimit:300,
-    waitForConnections:true,
-    acquireTimeout:60000,
+    waitForConnections:true
 
     host: conf.connectionBD.host,
     user: conf.connectionBD.user,
