@@ -24,7 +24,7 @@ const pool = mysql.createPool({
     password: conf.connectionBD.password
 });
 
-pool.getConnection((connection,err)=>{
+/*pool.getConnection((connection,err)=>{
   if(err){
        console.log(err);
       connection.release();
@@ -35,7 +35,7 @@ pool.getConnection((connection,err)=>{
   }
      
     })
-
+*/
 
 router.get('/', function (req, res) {
     res.render("index_email",{});
