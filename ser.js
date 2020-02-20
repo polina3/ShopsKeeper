@@ -14,15 +14,18 @@ const bodyParser = require("body-parser");
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));
 //---------------------------
+var options = {
+ 	host: conf.connectionBD.host,
+    user: conf.connectionBD.user,
+    database: conf.connectionBD.database,
+    password: conf.connectionBD.password
+}
+
 //-------настройка session--------------------
 app.use(session({
     key: 'session_cookie_name',
     secret: 'session_cookie_secret',
-    store: new SessionStore(
-    host: conf.connectionBD.host,
-    user: conf.connectionBD.user,
-    database: conf.connectionBD.database,
-    password: conf.connectionBD.password)
+    store: new SessionStore(options)
 }))
 
 
