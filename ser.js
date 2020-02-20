@@ -1,6 +1,6 @@
 const express = require('express');
-var main = require('./routes/index');
-var api = require('./routes/api');
+/*var main = require('./routes/index');
+var api = require('./routes/api');*/
 const conf=require('./config');
 
 var app=express();
