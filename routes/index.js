@@ -57,9 +57,10 @@ router.post('/', function (req, res) {
         console.log("-");
         return res.render('index_email',{data:"Такого пользователя нет"});
       }
+      console.log(results[0].email);
       req.session.email=results[0].email;
-      res.redirect("/");
-      console.log("log");
+      res.render("index_password",{});
+      
     });
   }
   else if(req.body.password){
