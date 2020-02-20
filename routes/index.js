@@ -3,7 +3,7 @@ var router = express.Router();
 var app=express();
 const mysql = require("mysql2");
 const bodyParser = require("body-parser");
-const conf=require('ShopsKeeper/config');
+const conf=require('.my_modul/config');
 
 const connection = mysql.createConnection({
   host: conf.connectionBD.host,
