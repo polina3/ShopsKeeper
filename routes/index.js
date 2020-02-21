@@ -1,7 +1,7 @@
 //-------настройка все что связанно с expess--------------------
 const express = require('express');
-const session = require('express-session');
-var SessionStore = require('express-mysql-session');
+//const session = require('express-session');
+//var SessionStore = require('express-mysql-session');
 var router = express.Router();
 var app=express();
 //-------SQL--------------------
@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const fs = require('fs');
 const conf=JSON.parse(fs.readFileSync('./config.json'));
 //-------настройка session--------------------
-var options = {
+/*var options = {
     host: conf.connectionBD.host,
     user: conf.connectionBD.user,
     database: conf.connectionBD.database,
@@ -28,7 +28,7 @@ app.use(session({
     saveUninitialized: true,
     resave:false
 }))
-
+*/
 //---------------------------
 var P_END=(pool)=>{
   pool.end((err)=>{
