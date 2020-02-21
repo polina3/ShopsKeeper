@@ -64,7 +64,7 @@ router.get('/', function (req, res) {
 });
 
 router.post('/', function (req, res) {
-  pool.execute(conf.qBD.q1,[req.body.email],(err, results)=>{
+    await  pool.execute(conf.qBD.q1,[req.body.email],(err, results)=>{
     if(err){
           console.log(err);
           return res.render('index_email',{data:"error"});
