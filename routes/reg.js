@@ -17,15 +17,6 @@ var P_END=(pool)=>{
   });
 }
 //---------------------------
-var isEmail=(req,res, next)=>{
-  if(req.session.email='' || !req.session.email){
-    res.redirect('/');
-  }
-  else{
-    return next();
-  }
-}
-//---------------------------
 const pool = mysql.createPool({
     connectionLimit: 500,
     queueLimit:300,
@@ -38,7 +29,7 @@ const pool = mysql.createPool({
 });
 //---------------------------
 router.get('/', function (req, res) {
-    res.render("index_email",{});
+    res.render("reg",{});
 });
 
 router.post('/', function (req, res) {
@@ -59,25 +50,7 @@ router.post('/', function (req, res) {
 });
 
 
-router.get('/password',isEmail, function (req, res) {
-    res.render("index_password",{});
-});
 
-router.post('/password', function (req, res) {
-  
-  let data=[req.session.email,req.body.password];
-   pool.execute(conf.qBD.q2,data,(err, results)=>{
-    if(err){
-          console.log(err);
-         return res.render('index_password',{data:"error"});
-      }
-    if(results.length==0){
-        console.log("-p");
-        return res.render('index_password',{data:"неверный пароль"});
-      }
-    res.send("Ok");
-  })          
-});
 //---------------------------
 
 module.exports = router;

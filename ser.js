@@ -7,6 +7,7 @@ var app=express();
 //-------подключение роутеров--------------------
 var main = require('./routes/index');
 var api = require('./routes/api');
+var reg = require('./routes/reg');
 //---------------------------
 const fs = require('fs');
 const conf=JSON.parse(fs.readFileSync('config.json'));
@@ -21,7 +22,6 @@ var options = {
     database: conf.connectionBD.database,
     password: conf.connectionBD.password
 }
-
 //-------настройка session--------------------
 app.use(session({
     key: 'session_cookie_name',
@@ -30,14 +30,15 @@ app.use(session({
     saveUninitialized: true,
     resave:false
 }))
-
-
-
+//---------------------------
 app.use("/static",express.static('static'));
-
 app.set("view engine", "pug");
+//---------------------------
 app.use('/', main);
-//app.use('/api', api);
+app.use('/api', api);
+app.use('/reg',reg);
+
+
 
 console.log("server run");
 
