@@ -1,34 +1,16 @@
 //-------настройка все что связанно с expess--------------------
 const express = require('express');
-//const session = require('express-session');
-//var SessionStore = require('express-mysql-session');
 var router = express.Router();
 var app=express();
 //-------SQL--------------------
 const mysql = require("mysql2");
 //-------bodyParser--------------------
-const bodyParser = require("body-parser");
+/*const bodyParser = require("body-parser");
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));*/
 //-------config.json--------------------
 const fs = require('fs');
 const conf=JSON.parse(fs.readFileSync('./config.json'));
-//-------настройка session--------------------
-/*var options = {
-    host: conf.connectionBD.host,
-    user: conf.connectionBD.user,
-    database: conf.connectionBD.database,
-    password: conf.connectionBD.password
-}
-
-app.use(session({
-    key: 'session_cookie_name',
-    secret: 'session_cookie_secret',
-    store: new SessionStore(options),
-    saveUninitialized: true,
-    resave:false
-}))
-*/
 //---------------------------
 var P_END=(pool)=>{
   pool.end((err)=>{
@@ -73,9 +55,7 @@ router.post('/', function (req, res) {
         console.log("-e");
         return res.render('index_email',{data:"Такого пользователя нет"});
       }
-      console.log(results[0].email);
       req.session.email=results[0].email;
-      console.log(req.session.email);
       res.redirect('/password');
   })   
      
@@ -83,7 +63,6 @@ router.post('/', function (req, res) {
 
 
 router.get('/password',isEmail, function (req, res) {
-    console.log(req.session.email);
     res.render("index_password",{});
 });
 
