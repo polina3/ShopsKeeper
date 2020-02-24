@@ -32,9 +32,9 @@ input{
     margin: 10px;
     font-size: 18pt;
 }
-label[for="m"] , #m:checked{
+label[for="m"]{
 	color: #E66400;
 }
-label[for="f"] , #f:checked{
+label[for="f"]{
 	color: #E66400;
 }
