@@ -9,20 +9,19 @@ body{
 }
 .f{
 	position: absolute;
-	left:117;
-	top:117;
-	bottom:117;
-	right:117;
+    left: 117px;
+    top: 117px;
+    bottom: 117px;
+    right: 117px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-ul {
-	list-style-type: none;
-	margin: 0;
+form{
+	width: 70%;
+    height: 70%;
 }
-
-li {
-	display: block;
-}
-
 input[type=radio] {
 	width: 0;
 	height: 0;
@@ -30,7 +29,6 @@ input[type=radio] {
 }
 label { 
 	cursor: pointer; 
-	font-weight: 400;
 }
 input{
 
