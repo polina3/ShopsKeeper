@@ -55,7 +55,7 @@ router.post('/', function (req, res) {
       res.redire("index_email",{});
       console.log("log");
     });
-  }
+  });
   else if(req.body.password){
     if(req.session.email='' || !req.session.email){
        res.redirect("/");
