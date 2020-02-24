@@ -22,11 +22,7 @@ form{
 	width: 70%;
     height: 70%;
 }
-input[type=radio] {
-	width: 0;
-	height: 0;
-	visibility: hidden;
-}
+
 label { 
 	color: #707070;
 	cursor: pointer; 
