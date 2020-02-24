@@ -36,6 +36,9 @@ input{
     margin: 10px;
     font-size: 18pt;
 }
-label ~ input[type=radio]:checked{
+label[for="m"] , #m:checked{
+	color: #E66400;
+}
+label[for="f"] , #f:checked{
 	color: #E66400;
 }
