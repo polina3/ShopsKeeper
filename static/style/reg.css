@@ -6,13 +6,9 @@ body{
 	width: 100%;
 	height: 100vh;
 	background: #E66400;
-	display: grid;
-	grid-template-columns: 10% 90%;
-
 }
 .f{
-	grid-column: 2;
-	background: #fff;
+	margin: 117px;
 }
 ul {
 	list-style-type: none;
