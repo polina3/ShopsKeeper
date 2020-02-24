@@ -52,23 +52,10 @@ router.post('/', function (req, res) {
         return res.render('index_email',{data:"Такого пользователя нет"});
       }
       req.session.email=results[0].email;
-      res.redire("index_email",{});
-      console.log("log");
+      res.redire("index_password",{});
     });
   });
-  else if(req.body.password){
-    if(req.session.email='' || !req.session.email){
-       res.redirect("/");
-    }
-    let rez=[req.session.email,req.body.password];
-   connection.query(conf.qBD.q2,rez,
-      function(err, results) {
-        if(err){
-      console.log(req.session.email);
-      res.redirect('/password');
-  }   
-     
-});
+  
 
 
 router.get('/password',isEmail, function (req, res) {
@@ -76,15 +63,13 @@ router.get('/password',isEmail, function (req, res) {
 });
 
 router.post('/password', function (req, res) {
-  
   let data=[req.session.email,req.body.password];
    pool.execute(conf.qBD.q2,data,(err, results)=>{
     if(err){
-          console.log(err);
-         return res.render('index_password',{data:"error"});
+        console.log(err);
+        return res.render('index_password',{data:"error"});
       }
     if(results.length==0){
-        console.log("-p");
         return res.render('index_password',{data:"неверный пароль"});
       }
     res.send("Ok");
