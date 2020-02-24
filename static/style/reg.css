@@ -9,6 +9,10 @@ body{
 }
 .f{
 	position: absolute;
+	left:117;
+	top:117;
+	bottom:117;
+	right:117;
 }
 ul {
 	list-style-type: none;
