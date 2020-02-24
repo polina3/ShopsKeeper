@@ -8,7 +8,7 @@ body{
 	background: #E66400;
 }
 .f{
-	margin: 117px;
+	position: absolute;
 }
 ul {
 	list-style-type: none;
