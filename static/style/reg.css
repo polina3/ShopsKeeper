@@ -28,8 +28,14 @@ input[type=radio] {
 	visibility: hidden;
 }
 label { 
+	color: #707070;
 	cursor: pointer; 
 }
 input{
-
+	width: 100%;
+    margin: 10px;
+    font-size: 18pt;
+}
+label ~ input[type=radio]:checked{
+	color: #E66400;
 }
