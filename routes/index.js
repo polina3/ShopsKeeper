@@ -58,13 +58,13 @@ router.post('/', function (req, res) {
         return res.render('index_email',{data:"Такого пользователя нет"});
       }
       req.session.email=results[0].email;
-      res.redirect("/");
+      res.redire("index_email",{});
       console.log("log");
     });
   }
   else if(req.body.password){
     if(req.session.email='' || !req.session.email){
-      res.render("index_password",{});
+       res.redirect("/");
     }
     let rez=[req.session.email,req.body.password];
    connection.query(conf.qBD.q2,rez,
