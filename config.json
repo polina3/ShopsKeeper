@@ -3,10 +3,7 @@
     {
         "q1" : "SELECT `email`,`password` FROM User where email=? ",
         "q2" : "SELECT `password` FROM User where email=? and password=?",
-        "task_manager":"SELECT * FROM tasks",
-        "task_user":"SELECT * FROM tasks where executor=? and done=0",
-        "rem_user":"UPDATE tasks SET done=1 where id=?",
-        "executor":"SELECT login FROM `user`"
+        "C_U":"INSERT INTO `User` (`email`, `password`, `phone`, `second_name`, `name`, `third_name`, `date of birth`, `gender`, `buy`) VALUES (?, ?, ?, ?, ?, ?, '?, ?, b'0');"
         
     },
     

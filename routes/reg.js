@@ -28,6 +28,18 @@ const pool = mysql.createPool({
     password: conf.connectionBD.password
 });
 //---------------------------
+var IsEmail=(atr)=>{
+  await pool.execute(conf.qBD.q1,atr,(err,results)=>{
+    if(err){
+          console.log(err);
+          return res.render('reg',{data:"error"});
+      }
+    if(results.length!=0){
+        return res.render('reg',{data:"Такой пользователь уже есть"});
+      }  
+  })
+}
+//---------------------------
 router.get('/', function (req, res) {
     res.render("reg",{});
 });
