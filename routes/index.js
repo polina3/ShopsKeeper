@@ -52,7 +52,7 @@ router.post('/', function (req, res) {
         return res.render('index_email',{data:"Такого пользователя нет"});
       }
       req.session.email=results[0].email;
-      res.redirect("index_password",{});
+      res.redirect("/password");
     });
   });
   
