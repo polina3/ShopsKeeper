@@ -1,28 +1,46 @@
+//-------настройка все что связанно с expess--------------------
 const express = require('express');
-const mysql = require("mysql2");
-var path = require('path');
 const session = require('express-session');
-const bodyParser = require("body-parser");
-const cookieParser = require('cookie-parser');
-const fs = require('fs');
+var SessionStore = require('express-mysql-session');
+var router = express.Router();
+var app=express();
+//-------подключение роутеров--------------------
 var main = require('./routes/index');
 var api = require('./routes/api');
-
-
-var app=express();
+var reg = require('./routes/reg');
+//---------------------------
+const fs = require('fs');
 const conf=JSON.parse(fs.readFileSync('config.json'));
-
+//---------------------------
+const bodyParser = require("body-parser");
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));
-
-app.use(cookieParser());
-
+//---------------------------
+var options = {
+ 	host: conf.connectionBD.host,
+    user: conf.connectionBD.user,
+    database: conf.connectionBD.database,
+    password: conf.connectionBD.password
+}
+//-------настройка session--------------------
+app.use(session({
+    key: 'session_cookie_name',
+    secret: 'session_cookie_secret',
+    store: new SessionStore(options),
+    saveUninitialized: true,
+    resave:false
+}))
+//---------------------------
 app.use("/static",express.static('static'));
 app.set("view engine", "pug");
+//---------------------------
 app.use('/', main);
 app.use('/api', api);
+app.use('/reg',reg);
 
- console.log("server run");
+
+
+console.log("server run");
 
 
 
