@@ -50,8 +50,7 @@ router.get('/', function (req, res) {
 });
 
 router.post('/', function (req, res) {
-    IsEmail(req.body.email);
-   /* if(IsEmail(req.body.email)){
+    if(IsEmail(req.body.email)){
       let atr=[req.body.email,req.body.password,req.body.tel,req.body.surname,req.body.name,req.body.t_name,req.body.date,req.body.gender];
       pool.execute(conf.qBD.S_k,atr,(err, results)=>{
       if(err){
@@ -65,7 +64,7 @@ router.post('/', function (req, res) {
     else{
       console.log(4);
       res.render('reg',{data:"Такой пользователь уже есть"});
-    }*/
+    }
    
      
 });
