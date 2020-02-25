@@ -3,7 +3,7 @@
     {
         "q1" : "SELECT `email`,`password` FROM User where email=? ",
         "q2" : "SELECT `password` FROM User where email=? and password=?",
-        "C_U":"INSERT INTO `User` (`email`, `password`, `phone`, `second_name`, `name`, `third_name`, `date of birth`, `gender`, `buy`) VALUES(?, ?, ?, ?, ?, ?, '?, ?, '0');"
+        "C_U":"INSERT INTO `User` (`email`, `password`, `phone`, `second_name`, `name`, `third_name`, `date of birth`, `gender`, `buy`) VALUES('?', '?', '?', '?', '?', '?', '?', '?', '0');"
         
     },
     
