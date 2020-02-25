@@ -25,12 +25,12 @@ const pool = mysql.createPool({
     user: conf.connectionBD.user,
     database: conf.connectionBD.database,
     password: conf.connectionBD.password
-});
+}).promise();
 //---------------------------
-var IsEmail=(atr)=>{
+var IsEmail=async (atr)=>{
   let a=[atr];
   console.log("в IsEmail");
-  let r= async (a)=>{ await pool.execute(conf.qBD.q1,a,(err,results)=>{
+  let r = await pool.execute(conf.qBD.q1,a,(err,results)=>{
     if(err){
       console.log(1);
       console.log(err);
@@ -43,8 +43,8 @@ var IsEmail=(atr)=>{
       }  
       console.log("ok");
       return true;
-    });}
-  return r(a);
+    });
+  return r;
 }
 //---------------------------
 var CreateUser= async (req,res)=>{
@@ -76,7 +76,27 @@ router.get('/', function (req, res) {
 });
 
 router.post('/', function (req, res) {
- CreateUser(req, res);
+ pool.execute(conf.qBD.q1,[req.body.email])
+  .then(result =>{
+    if(result.length!=0){
+      console.log(2);
+      res.render('reg',{data:"Такой пользователь уже есть"});
+    }
+    else{
+        let a=[req.body.email,req.body.password,req.body.tel,req.body.surname,req.body.name,req.body.t_name,req.body.date,req.body.gender];
+        pool.execute(conf.qBD.S_k,a)
+        .then(() =>{
+          res.send('OK');
+       })
+       .catch((err)=>{
+            console.log(err);
+            return res.render('reg',{data:"error"});
+       })
+    }
+          })
+  .catch((err)=>{
+            console.log(err.message);
+          });
 
 })
 
