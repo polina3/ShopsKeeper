@@ -28,7 +28,7 @@ const pool = mysql.createPool({
 });
 //---------------------------
 var IsEmail=(atr)=>{
-  let a=[art];
+  let a=[atr];
     pool.execute(conf.qBD.q1,a,(err,results)=>{
 
     if(err){
