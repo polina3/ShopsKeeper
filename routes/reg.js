@@ -30,19 +30,21 @@ const pool = mysql.createPool({
 var IsEmail=async (atr)=>{
   let a=[atr];
   console.log("в IsEmail");
-  await pool.execute(conf.qBD.q1,a,(err,results)=>{
+  let r= await pool.execute(conf.qBD.q1,a,(err,results)=>{
     if(err){
       console.log(1);
       console.log(err);
       return false;
     }
+    console.log("в IsEmail/pool");
     if(results.length!=0){
       console.log(2);
       return false;
       }  
       console.log("ok");
       return true;
-          });
+    });
+  return r;
 }
 //---------------------------
 var CreateUser= async (req,res)=>{
