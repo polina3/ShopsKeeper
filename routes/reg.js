@@ -27,7 +27,7 @@ const pool = mysql.createPool({
     password: conf.connectionBD.password
 }).promise();
 //---------------------------
-var IsEmail=async (atr)=>{
+/*var IsEmail=async (atr)=>{
   let a=[atr];
   console.log("в IsEmail");
   let r = await pool.execute(conf.qBD.q1,a,(err,results)=>{
@@ -67,7 +67,7 @@ var CreateUser= async (req,res)=>{
       console.log(4);
       res.render('reg',{data:"Такой пользователь уже есть"});
     }
-  }
+  }*/
 //---------------------------
 
 //---------------------------
@@ -79,10 +79,11 @@ router.post('/', function (req, res) {
  pool.execute(conf.qBD.q1,[req.body.email])
   .then(result =>{
     if(result.length!=0){
-      console.log(2);
+      console.log(result);
       res.render('reg',{data:"Такой пользователь уже есть"});
     }
     else{
+        console.log("else");
         let a=[req.body.email,req.body.password,req.body.tel,req.body.surname,req.body.name,req.body.t_name,req.body.date,req.body.gender];
         pool.execute(conf.qBD.S_k,a)
         .then(() =>{
