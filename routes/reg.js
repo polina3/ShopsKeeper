@@ -31,10 +31,12 @@ const pool = mysql.createPool({
 var IsEmail=(atr)=>{
     pool.execute(conf.qBD.q1,atr,(err,results)=>{
     if(err){
+          console.log(1);
           console.log(err);
           return false;
       }
     if(results.length!=0){
+      console.log(2);
         return false;
       }  
     return true;
@@ -51,6 +53,7 @@ router.post('/', function (req, res) {
       let atr=[req.body.email,req.body.password,req.body.tel,req.body.surname,req.body.name,req.body.t_name,req.body.date,req.body.gender];
       pool.execute(conf.qBD.S_k,atr,(err, results)=>{
       if(err){
+        console.log(3);
             console.log(err);
             return res.render('reg',{data:"error"});
         }
@@ -58,9 +61,10 @@ router.post('/', function (req, res) {
       })   
     }
     else{
+      console.log(4);
       res.render('reg',{data:"Такой пользователь уже есть"});
     }
-    
+   
      
 });
 
