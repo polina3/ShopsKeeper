@@ -27,9 +27,9 @@ const pool = mysql.createPool({
     password: conf.connectionBD.password
 });
 //---------------------------
-var IsEmail= (atr,callback)=>{
+var IsEmail=async (atr)=>{
   let a=[atr];
-  let rez=pool.execute(conf.qBD.q1,a,(err,results)=>{
+  let rez= await pool.execute(conf.qBD.q1,a,(err,results)=>{
     if(err){
       console.log(1);
       console.log(err);
@@ -42,7 +42,8 @@ var IsEmail= (atr,callback)=>{
       console.log("ok");
       return true;
           });
-  callback(rez);
+  console.log(rez);
+  return rez;
 }
 //---------------------------
 var CreateUser=(rez)=>{
@@ -63,12 +64,31 @@ var CreateUser=(rez)=>{
     }
   }
 //---------------------------
+
+//---------------------------
 router.get('/', function (req, res) {
     res.render("reg",{});
 });
 
 router.post('/', function (req, res) {
-  IsEmail(req.body.email,CreateUser);
+  IsEmail(req.body.email).then(rez => {
+     if(rez){
+      let a=[req.body.email,req.body.password,req.body.tel,req.body.surname,req.body.name,req.body.t_name,req.body.date,req.body.gender];
+      pool.execute(conf.qBD.S_k,a,(err, results)=>{
+      if(err){
+        console.log(3);
+            console.log(err);
+            return res.render('reg',{data:"error"});
+        }
+        res.send('OK');
+      })   
+    }
+    else{
+      console.log(4);
+      res.render('reg',{data:"Такой пользователь уже есть"});
+    }
+  });
+
 })
 
 //---------------------------
