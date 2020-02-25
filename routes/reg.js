@@ -28,7 +28,9 @@ const pool = mysql.createPool({
 });
 //---------------------------
 var IsEmail=(atr)=>{
-    pool.execute(conf.qBD.q1,atr,(err,results)=>{
+  let a=[art];
+    pool.execute(conf.qBD.q1,a,(err,results)=>{
+
     if(err){
           console.log(1);
           console.log(err);
@@ -47,7 +49,7 @@ router.get('/', function (req, res) {
 });
 
 router.post('/', function (req, res) {
-    IsEmail([req.body.email]);
+    IsEmail(req.body.email);
    /* if(IsEmail(req.body.email)){
       let atr=[req.body.email,req.body.password,req.body.tel,req.body.surname,req.body.name,req.body.t_name,req.body.date,req.body.gender];
       pool.execute(conf.qBD.S_k,atr,(err, results)=>{
