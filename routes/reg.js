@@ -45,7 +45,8 @@ var IsEmail= (atr)=>{
 }
 //---------------------------
 var CreateUser= async (req,res)=>{
-  let rez=await IsEmail(req.body.email);
+    let rez= await IsEmail(req.body.email);
+    console.log(rez);
      if(rez){
       let a=[req.body.email,req.body.password,req.body.tel,req.body.surname,req.body.name,req.body.t_name,req.body.date,req.body.gender];
       pool.execute(conf.qBD.S_k,a,(err, results)=>{
