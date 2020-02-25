@@ -74,7 +74,7 @@ router.post("/reg",(req,res)=>{
    .catch((err)=>{
     r.response=error;
    })
- s res.send(JSON.stringify(r));
+    res.send(JSON.stringify(r));
 });
 
 
