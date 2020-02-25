@@ -94,7 +94,7 @@ router.post('/', function (req, res) {
             req.body.date,
             req.body.gender
           ];
-        pool.execute(conf.qBD.S_U,a)
+        pool.execute(conf.qBD.C_U,a)
         .then(() =>{
           res.send('OK');
        })
