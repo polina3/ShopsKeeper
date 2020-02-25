@@ -29,7 +29,8 @@ const pool = mysql.createPool({
 //---------------------------
 var IsEmail=async (atr)=>{
   let a=[atr];
-  await  pool.execute(conf.qBD.q1,a,(err,results)=>{
+  console.log("в IsEmail");
+  await pool.execute(conf.qBD.q1,a,(err,results)=>{
     if(err){
       console.log(1);
       console.log(err);
@@ -48,10 +49,11 @@ var CreateUser= async (req,res)=>{
     let rez= await IsEmail(req.body.email);
     console.log(rez);
      if(rez){
+      console.log("в if");
       let a=await [req.body.email,req.body.password,req.body.tel,req.body.surname,req.body.name,req.body.t_name,req.body.date,req.body.gender];
       await pool.execute(conf.qBD.S_k,a,(err, results)=>{
       if(err){
-        console.log(3);
+            console.log(3);
             console.log(err);
             return res.render('reg',{data:"error"});
         }
