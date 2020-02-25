@@ -51,8 +51,9 @@ router.get('/', function (req, res) {
 
 router.post('/', function (req, res) {
     if(IsEmail(req.body.email)){
-      let atr=[req.body.email,req.body.password,req.body.tel,req.body.surname,req.body.name,req.body.t_name,req.body.date,req.body.gender];
-      pool.execute(conf.qBD.S_k,atr,(err, results)=>{
+      let a=[req.body.email,req.body.password,req.body.tel,req.body.surname,req.body.name,req.body.t_name,req.body.date,req.body.gender];
+      console.log(a);
+      pool.execute(conf.qBD.S_k,a,(err, results)=>{
       if(err){
         console.log(3);
             console.log(err);
