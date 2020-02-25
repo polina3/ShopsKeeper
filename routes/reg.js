@@ -45,12 +45,7 @@ var IsEmail= (atr,callback)=>{
   callback(rez);
 }
 //---------------------------
-router.get('/', function (req, res) {
-    res.render("reg",{});
-});
-
-router.post('/', function (req, res) {
-  IsEmail(req.body.email,(rez)=>{
+var CreateUser=(rez)=>{
      if(rez){
       let a=[req.body.email,req.body.password,req.body.tel,req.body.surname,req.body.name,req.body.t_name,req.body.date,req.body.gender];
       pool.execute(conf.qBD.S_k,a,(err, results)=>{
@@ -66,11 +61,14 @@ router.post('/', function (req, res) {
       console.log(4);
       res.render('reg',{data:"Такой пользователь уже есть"});
     }
-  })
-   
-   
-     
+  }
+//---------------------------
+router.get('/', function (req, res) {
+    res.render("reg",{});
 });
+
+router.post('/', function (req, res) {
+  IsEmail(req.body.email,CreateUser);
 
 
 
