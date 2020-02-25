@@ -27,10 +27,10 @@ const pool = mysql.createPool({
     password: conf.connectionBD.password
 });
 //---------------------------
-var IsEmail=async (atr)=>{
+var IsEmail=(atr)=>{
   let a=[atr];
   console.log("в IsEmail");
-  let r= await pool.execute(conf.qBD.q1,a,(err,results)=>{
+  let r= async (a)=>{ await pool.execute(conf.qBD.q1,a,(err,results)=>{
     if(err){
       console.log(1);
       console.log(err);
@@ -43,8 +43,8 @@ var IsEmail=async (atr)=>{
       }  
       console.log("ok");
       return true;
-    });
-  return r;
+    });}
+  return r(a);
 }
 //---------------------------
 var CreateUser= async (req,res)=>{
@@ -54,6 +54,7 @@ var CreateUser= async (req,res)=>{
       console.log("в if");
       let a=await [req.body.email,req.body.password,req.body.tel,req.body.surname,req.body.name,req.body.t_name,req.body.date,req.body.gender];
       await pool.execute(conf.qBD.S_k,a,(err, results)=>{
+        console.log("в CreateUser/pool");
       if(err){
             console.log(3);
             console.log(err);
