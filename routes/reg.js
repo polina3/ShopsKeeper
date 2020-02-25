@@ -40,6 +40,7 @@ var IsEmail=(atr)=>{
       console.log(2);
         return false;
       }  
+    console.log("ok");
     return true;
   })
 }
