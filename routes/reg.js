@@ -27,48 +27,7 @@ const pool = mysql.createPool({
     password: conf.connectionBD.password
 }).promise();
 //---------------------------
-/*var IsEmail=async (atr)=>{
-  let a=[atr];
-  console.log("в IsEmail");
-  let r = await pool.execute(conf.qBD.q1,a,(err,results)=>{
-    if(err){
-      console.log(1);
-      console.log(err);
-      return false;
-    }
-    console.log("в IsEmail/pool");
-    if(results.length!=0){
-      console.log(2);
-      return false;
-      }  
-      console.log("ok");
-      return true;
-    });
-  return r;
-}
-//---------------------------
-var CreateUser= async (req,res)=>{
-    let rez= await IsEmail(req.body.email);
-    console.log(rez);
-     if(rez){
-      console.log("в if");
-      let a=await [req.body.email,req.body.password,req.body.tel,req.body.surname,req.body.name,req.body.t_name,req.body.date,req.body.gender];
-      await pool.execute(conf.qBD.S_k,a,(err, results)=>{
-        console.log("в CreateUser/pool");
-      if(err){
-            console.log(3);
-            console.log(err);
-            return res.render('reg',{data:"error"});
-        }
-        res.send('OK');
-      })   
-    }
-    else{
-      console.log(4);
-      res.render('reg',{data:"Такой пользователь уже есть"});
-    }
-  }*/
-//---------------------------
+
 
 //---------------------------
 router.get('/', function (req, res) {

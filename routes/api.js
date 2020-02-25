@@ -56,7 +56,26 @@ router.post("/password",(req,res)=>{
    res.send(JSON.stringify(r));
    connection.end();
 });
-
+router.post("/reg",(req,res)=>{
+ let a=[
+        req.body.email,
+        req.body.password,
+        req.body.tel,
+        req.body.surname,
+        req.body.name,
+        req.body.t_name,
+        req.body.date,
+        req.body.gender
+      ];
+   pool.execute(conf.qBD.C_U,a)
+   .then(()=>{
+    r.response="true";
+   })
+   .catch((err)=>{
+    r.response=error;
+   })
+ s res.send(JSON.stringify(r));
+});
 
 
 module.exports = router;
