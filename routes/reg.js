@@ -77,15 +77,15 @@ router.get('/', function (req, res) {
 
 router.post('/', function (req, res) {
  pool.execute(conf.qBD.q1,[req.body.email])
-  .then(result =>{
-    if(result[0].length!=0){
+  .then(results =>{
+    if(results[0].length!=0){
       console.log(result);
       res.render('reg',{data:"Такой пользователь уже есть"});
     }
     else{
         console.log("else");
         let a=[req.body.email,req.body.password,req.body.tel,req.body.surname,req.body.name,req.body.t_name,req.body.date,req.body.gender];
-        pool.execute(conf.qBD.S_k,a)
+        pool.execute(conf.qBD.S_U,a)
         .then(() =>{
           res.send('OK');
        })
