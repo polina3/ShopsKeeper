@@ -78,7 +78,7 @@ router.get('/', function (req, res) {
 router.post('/', function (req, res) {
  pool.execute(conf.qBD.q1,[req.body.email])
   .then(result =>{
-    if(result.length!=0){
+    if(result[0].length!=0){
       console.log(result);
       res.render('reg',{data:"Такой пользователь уже есть"});
     }
