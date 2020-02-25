@@ -27,9 +27,9 @@ const pool = mysql.createPool({
     password: conf.connectionBD.password
 });
 //---------------------------
-var IsEmail=(atr)=>{
+var IsEmail=async (atr)=>{
   let a=[atr];
-    pool.execute(conf.qBD.q1,a,(err,results)=>{
+  await pool.execute(conf.qBD.q1,a,(err,results)=>{
 
     if(err){
           console.log(1);
@@ -41,7 +41,7 @@ var IsEmail=(atr)=>{
         return false;
       }  
     console.log("ok");
-    return true;
+     return true;
   })
 }
 //---------------------------
