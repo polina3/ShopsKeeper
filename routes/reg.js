@@ -71,7 +71,7 @@ router.get('/', function (req, res) {
 });
 
 router.post('/', function (req, res) {
- CreateUser(req, res)
+ CreateUser(req, res);
 
 })
 
