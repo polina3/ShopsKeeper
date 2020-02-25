@@ -84,7 +84,7 @@ router.post('/', function (req, res) {
     }
     else{
         console.log("else");
-        let a={
+        let a=[
             req.body.email,
             req.body.password,
             req.body.tel,
@@ -93,7 +93,7 @@ router.post('/', function (req, res) {
             req.body.t_name,
             req.body.date,
             req.body.gender
-          };
+          ];
         pool.execute(conf.qBD.S_U,a)
         .then(() =>{
           res.send('OK');
