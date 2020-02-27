@@ -62,19 +62,24 @@ router.post("/email",(req,res)=>{
 });
 router.post("/password",(req,res)=>{
   let rez=[req.body.email,req.body.password];
-	 pool.execute(conf.qBD.q2,rez,
-      function(err, results) {
-        if(err){
-          console.log(err);
-           r.response="error";
+	 pool.execute(conf.qBD.q2,rez)
+   .then((results)=>{
+    if(results.length==0){
+        r.response=false;
       }
-      if(results.length==0){
-        console.log("-");
-         r.response="false";
+      else{
+        r.response=true;
       }
-      r.response="true";
-    });
-   res.send(JSON.stringify(r));
+   })
+   .then(()=>{
+     res.send(JSON.stringify(r));
+   })
+   .catch(err=>{
+      console.log(err);
+      r.response="error";
+      res.send(JSON.stringify(r));
+   })
+      
 });
 router.post("/reg",(req,res)=>{
  let a=[
@@ -89,12 +94,13 @@ router.post("/reg",(req,res)=>{
       ];
    pool.execute(conf.qBD.C_U,a)
    .then(()=>{
-    r.response="true";
+    r.response=true;
+    res.send(JSON.stringify(r));
    })
    .catch((err)=>{
     r.response=error;
    })
-    res.send(JSON.stringify(r));
+   
 });
 
 
