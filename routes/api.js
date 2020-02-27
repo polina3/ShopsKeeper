@@ -41,13 +41,16 @@ router.post("/email",(req,res)=>{
       if(results.length==0){
         console.log("-");
         r.response=false;
-        P_END(pool);
       }
-      console.log("+");
-      r.response=true;
-      P_END(pool);
+      else{
+        console.log("+");
+        r.response=true;
+      }
+     
+      
  	});
    res.send(JSON.stringify(r));
+   P_END(pool);
 });
 router.post("/password",(req,res)=>{
   let rez=[req.body.email,req.body.password];
