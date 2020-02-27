@@ -18,7 +18,14 @@ const pool = mysql.createPool({
     database: conf.connectionBD.database,
     password: conf.connectionBD.password
 });
-
+var P_END=(pool)=>{
+  pool.end((err)=>{
+    if (err) {
+      console.log(err.message);
+    }
+    console.log("пул закрыт");
+  });
+}
 var r={
   response:""
 };
@@ -29,13 +36,16 @@ router.post("/email",(req,res)=>{
         if(err){
           console.log(err);
           r.response="error";
+          P_END(pool);
       }
       if(results.length==0){
         console.log("-");
         r.response=false;
+        P_END(pool);
       }
       console.log("+");
       r.response=true;
+      P_END(pool);
  	});
    res.send(JSON.stringify(r));
 });
