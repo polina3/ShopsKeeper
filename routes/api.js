@@ -24,7 +24,7 @@ var r={
 };
 router.post("/email",(req,res)=>{
 	console.log(req.body.email);
-	 pool.execute(conf.qBD.q1,req.body.email,
+	 pool.execute(conf.qBD.q1,[req.body.email],
       function(err, results) {
         if(err){
           console.log(err);
