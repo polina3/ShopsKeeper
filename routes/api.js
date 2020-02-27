@@ -32,9 +32,10 @@ router.post("/email",(req,res)=>{
       }
       if(results.length==0){
         console.log("-");
-        r.response="false";
+        r.response=false;
       }
-      r.response="true";
+      console.log("+");
+      r.response=true;
  	});
    res.send(JSON.stringify(r));
 });
