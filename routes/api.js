@@ -17,7 +17,8 @@ const pool = mysql.createPool({
     user: conf.connectionBD.user,
     database: conf.connectionBD.database,
     password: conf.connectionBD.password
-});
+}).promise();
+//---------------------------
 var P_END=(pool)=>{
   pool.end((err)=>{
     if (err) {
@@ -26,19 +27,16 @@ var P_END=(pool)=>{
     console.log("пул закрыт");
   });
 }
+//---------------------------
 var r={
   response:""
 };
-router.post("/email",async (req,res)=>{
+//---------------------------
+router.post("/email",(req,res)=>{
 	console.log(req.body.email);
-	await pool.execute(conf.qBD.q1,[req.body.email],
-      function(err, results) {
-        if(err){
-          console.log(err);
-          r.response="error";
-          P_END(pool);
-      }
-      if(results.length==0){
+	 pool.execute(conf.qBD.q1,[req.body.email])
+   .then((results)=>{
+    if(results[0].length==0){
         console.log("-");
         r.response=false;
       }
@@ -46,8 +44,20 @@ router.post("/email",async (req,res)=>{
         console.log("+");
         r.response=true;
       }
- 	});
-   res.send(JSON.stringify(r));
+   })
+   .then(()=>{
+    res.send(JSON.stringify(r));
+   })
+   .catch(err=>{
+    if(err){
+          console.log(err);
+          r.response="error";
+          P_END(pool);
+          res.send(JSON.stringify(r));
+      }
+   })
+    
+  
 
 });
 router.post("/password",(req,res)=>{
