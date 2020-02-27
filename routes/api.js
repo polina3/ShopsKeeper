@@ -29,9 +29,9 @@ var P_END=(pool)=>{
 var r={
   response:""
 };
-router.post("/email",(req,res)=>{
+router.post("/email",async (req,res)=>{
 	console.log(req.body.email);
-	 pool.execute(conf.qBD.q1,[req.body.email],
+	await pool.execute(conf.qBD.q1,[req.body.email],
       function(err, results) {
         if(err){
           console.log(err);
@@ -46,11 +46,9 @@ router.post("/email",(req,res)=>{
         console.log("+");
         r.response=true;
       }
-     
-      
  	});
    res.send(JSON.stringify(r));
-  
+
 });
 router.post("/password",(req,res)=>{
   let rez=[req.body.email,req.body.password];
