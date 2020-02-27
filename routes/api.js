@@ -50,7 +50,7 @@ router.post("/email",(req,res)=>{
       
  	});
    res.send(JSON.stringify(r));
-   P_END(pool);
+  
 });
 router.post("/password",(req,res)=>{
   let rez=[req.body.email,req.body.password];
