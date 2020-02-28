@@ -99,6 +99,7 @@ router.post("/reg",(req,res)=>{
    })
    .catch((err)=>{
     r.response=error;
+    res.send(JSON.stringify(r));
    })
    
 });
