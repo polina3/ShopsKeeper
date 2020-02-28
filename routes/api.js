@@ -82,6 +82,7 @@ router.post("/password",(req,res)=>{
       
 });
 router.post("/reg",(req,res)=>{
+
  let a=[
         req.body.email,
         req.body.password,
@@ -92,14 +93,16 @@ router.post("/reg",(req,res)=>{
         req.body.date,
         req.body.gender
       ];
+      console.log(a);
    pool.execute(conf.qBD.C_U,a)
    .then((results)=>{
     r.response=true;
-    res.send(JSON.stringify(r));
+    return res.send(JSON.stringify(r));
    })
    .catch((err)=>{
+    console.log(err);
     r.response=error;
-    res.send(JSON.stringify(r));
+    return res.send(JSON.stringify(r));
    })
    
 });
