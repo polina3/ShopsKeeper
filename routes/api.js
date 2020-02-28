@@ -93,7 +93,7 @@ router.post("/reg",(req,res)=>{
         req.body.gender
       ];
    pool.execute(conf.qBD.C_U,a)
-   .then(()=>{
+   .then((results)=>{
     r.response=true;
     res.send(JSON.stringify(r));
    })
