@@ -18,13 +18,21 @@ var P_END=(pool)=>{
 }
 //---------------------------
 var isEmail=(req,res, next)=>{
-  if(req.session.email='' || !req.session.email){
+  if(req.session.email='' || req.session.email){
     res.redirect('/');
   }
   else{
     return next();
   }
 }
+
+//---------------------------
+class User {
+  constructor(name) {
+    this.name = name;
+  }
+}
+
 //---------------------------
 const pool = mysql.createPool({
     connectionLimit: 500,
