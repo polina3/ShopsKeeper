@@ -64,6 +64,7 @@ router.get('/password',isEmail, function (req, res) {
 
 router.post('/password', function (req, res) {
   let data=[req.session.email,req.body.password];
+  console.log(req.session.email);
    pool.execute(conf.qBD.q2,data,(err, results)=>{
     if(err){
         console.log(err);
@@ -77,6 +78,6 @@ router.post('/password', function (req, res) {
 });
 //---------------------------
 router.get("/PersonalPage",isEmail,(req, res)=>{
-  res.send( req.session.email);
+  res.send( req.session.email); 
 })
 module.exports = router;
