@@ -27,13 +27,6 @@ var isEmail=(req,res, next)=>{
 }
 
 //---------------------------
-class User {
-  constructor(name) {
-    this.name = name;
-  }
-}
-
-//---------------------------
 const pool = mysql.createPool({
     connectionLimit: 500,
     queueLimit:300,
@@ -88,7 +81,5 @@ router.post('/password', function (req, res) {
   })          
 });
 //---------------------------
-router.get("/PersonalPage",IsEmail,(req, res)=>{
-  res.send( req.session.email); 
-})
+
 module.exports = router;

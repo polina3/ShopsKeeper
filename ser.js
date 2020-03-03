@@ -8,6 +8,7 @@ var app=express();
 var main = require('./routes/index');
 var api = require('./routes/api');
 var reg = require('./routes/reg');
+var pp=require('./routes/PersonalPage.js')
 //---------------------------
 const fs = require('fs');
 const conf=JSON.parse(fs.readFileSync('config.json'));
@@ -37,7 +38,7 @@ app.set("view engine", "pug");
 app.use('/', main);
 app.use('/api', api);
 app.use('/reg',reg);
-
+app.use('/PersonalPage',pp);
 
 
 console.log("server run");
