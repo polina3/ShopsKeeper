@@ -48,12 +48,11 @@ router.post('/', function (req, res) {
           return res.render('index_email',{data:"error"});
       }
      if(results.length==0){
-        console.log("-e");
         return res.render('index_email',{data:"Такого пользователя нет"});
       }
       req.session.email=results[0].email;
       console.log(req.session.email);
-      res.redirect("/password");
+      return res.redirect("/password");
     });
   });
   
@@ -74,11 +73,14 @@ router.post('/password', function (req, res) {
     if(results.length==0){
         return res.render('index_password',{data:"неверный пароль"});
       }
-   res.redirect("/PersonalPage");
+      else{
+        return res.redirect("/PersonalPage");
+      }
+      
   })          
 });
 //---------------------------
-router.get("/PersonalPage",isEmail,(req, res)=>{
+router.get("/PersonalPage",(req, res)=>{
   res.send( req.session.email); 
 })
 module.exports = router;
