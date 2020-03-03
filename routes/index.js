@@ -72,7 +72,6 @@ router.get('/password',isEmail, function (req, res) {
 
 router.post('/password', function (req, res) {
   let data=[req.session.email,req.body.password];
-  console.log(data);
    pool.execute(conf.qBD.q2,data,(err, results)=>{
     if(err){
         console.log(err);
@@ -82,7 +81,7 @@ router.post('/password', function (req, res) {
         return res.render('index_password',{data:"неверный пароль"});
       }
       else{
-        console.log(req.session.email)
+        req.session.authorized=true;
         return res.redirect("/PersonalPage");
       }
       
