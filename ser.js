@@ -23,6 +23,15 @@ var options = {
     database: conf.connectionBD.database,
     password: conf.connectionBD.password
 }
+//---------------------------
+var isEmail=(req,res, next)=>{
+  if((req.session.email=='') || (typeof req.session.email == undefined)){
+    res.redirect('/');
+  }
+  else{
+    return next();
+  }
+}
 //-------настройка session--------------------
 app.use(session({
     key: 'session_cookie_name',
@@ -38,11 +47,11 @@ app.set("view engine", "pug");
 app.use('/', main);
 app.use('/api', api);
 app.use('/reg',reg);
-app.use('/PersonalPage',pp);
+app.use('/PersonalPage',isEmail,pp);
 
 
 console.log("server run");
-
-
+console.log(req.session.authorized);
+console.log(req.session.email);
 
 app.listen(process.env.PORT || conf.port);
