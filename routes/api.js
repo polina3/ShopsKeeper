@@ -82,8 +82,8 @@ router.post("/password",(req,res)=>{
       
 });
 router.post("/reg",(req,res)=>{
-
- let a=[
+try{
+  let a=[
         req.body.email,
         req.body.password,
         req.body.tel,
@@ -94,6 +94,15 @@ router.post("/reg",(req,res)=>{
         req.body.gender
       ];
       console.log(a);
+}
+catch(err){
+  console.log(err);
+  r.response="err";
+  return res.send(JSON.stringify(r));
+}
+
+ 
+     
    pool.execute(conf.qBD.C_U,a)
    .then((results)=>{
     r.response=true;
