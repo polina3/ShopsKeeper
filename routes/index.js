@@ -18,7 +18,7 @@ var P_END=(pool)=>{
 }
 //---------------------------
 var isEmail=(req,res, next)=>{
-  if(req.session.email='' || req.session.email){
+  if((req.session.email=='') || (typeof req.session.email == undefined)){
     res.redirect('/');
   }
   else{
