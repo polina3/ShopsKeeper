@@ -25,7 +25,7 @@ var options = {
 }
 //---------------------------
 var isEmail=(req,res, next)=>{
-  if((req.session.email=='') || (typeof req.session.email == undefined)){
+ if(typeof req.session.email === 'undefined' || req.session.email === null){
     res.redirect('/');
   }
   else{
