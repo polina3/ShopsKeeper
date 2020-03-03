@@ -82,8 +82,9 @@ router.post("/password",(req,res)=>{
       
 });
 router.post("/reg",(req,res)=>{
+  let a=[];
 try{
-  let a=[
+  a=[
         req.body.email,
         req.body.password,
         req.body.tel,
