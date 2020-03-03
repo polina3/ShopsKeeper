@@ -88,7 +88,7 @@ router.post('/password', function (req, res) {
   })          
 });
 //---------------------------
-router.get("/PersonalPage",(req, res)=>{
+router.get("/PersonalPage",IsEmail,(req, res)=>{
   res.send( req.session.email); 
 })
 module.exports = router;
