@@ -51,7 +51,6 @@ app.use('/PersonalPage',isEmail,pp);
 
 
 console.log("server run");
-console.log(req.session.authorized);
-console.log(req.session.email);
+
 
 app.listen(process.env.PORT || conf.port);
