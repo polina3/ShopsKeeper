@@ -72,9 +72,11 @@ router.post('/password', function (req, res) {
     if(results.length==0){
         return res.render('index_password',{data:"неверный пароль"});
       }
-    res.send("Ok");
+   res.redirect("/PersonalPage");
   })          
 });
 //---------------------------
-
+router.get("/PersonalPage",isEmail,(req, res)=>{
+  res.send( req.session.email);
+})
 module.exports = router;

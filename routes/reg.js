@@ -56,7 +56,7 @@ router.post('/', function (req, res) {
            console.log(a);
         pool.execute(conf.qBD.C_U,a)
         .then(() =>{
-          res.send('OK');
+         res.redirect('/');
        })
        .catch((err)=>{
             console.log(err);
