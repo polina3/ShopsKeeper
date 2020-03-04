@@ -1,0 +1,17 @@
+- var values = #{shops};
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h1>#{login}</h1>
+	<ul>
+		each val in values
+    		li= val
+  		else
+    		li There are no values
+	</ul>
+</body>
+</html>
