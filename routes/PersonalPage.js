@@ -40,7 +40,7 @@ const pool = mysql.createPool({
 
 router.get('/', function (req, res) {
   console.log(req.session.email);
-  pool.execute(conf.qBD.Shop,req.session.email)
+  pool.execute(conf.qBD.Shop,req.session.email})
   .then((result)=>{
     res.render("PersonalPage",{login:req.session.email);
   })
