@@ -11,9 +11,6 @@ var api = require('./routes/api');
 var reg = require('./routes/reg');
 var pp=require('./routes/PersonalPage.js')
 //---------------------------
-/*const fs = require('fs');
-const conf=JSON.parse(fs.readFileSync('config.json'));*/
-//---------------------------
 const bodyParser = require("body-parser");
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));
