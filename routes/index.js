@@ -38,8 +38,6 @@ const pool = mysql.createPool({
 });
 //---------------------------
 router.get('/', function (req, res) {
-    console.log(req.session.authorized);
-    console.log(req.session.email);
     res.render("index_email",{});
 });
 
