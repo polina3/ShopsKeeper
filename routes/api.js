@@ -5,8 +5,7 @@ var app=express();
 //-------SQL--------------------
 const mysql = require("mysql2");
 //-------config.json--------------------
-const fs = require('fs');
-const conf=JSON.parse(fs.readFileSync('./config.json'));
+var conf=require('config');
 //---------------------------
 const pool = mysql.createPool({
     connectionLimit: 500,
