@@ -35,7 +35,7 @@ router.get('/', function (req, res) {
   console.log(req.session.email);
   pool.execute(conf.qBD.Shop,[req.session.email])
   .then((result)=>{
-    console.log(result);
+    fs.writeFileSync("hello.txt", result);
     res.render("PersonalPage",{login:req.session.email,shops:[4,5]});
   })
 });
