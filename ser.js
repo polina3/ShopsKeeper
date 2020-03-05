@@ -3,6 +3,7 @@ const express = require('express');
 const session = require('express-session');
 var SessionStore = require('express-mysql-session');
 var router = express.Router();
+var conf=require('config');
 var app=express();
 //-------подключение роутеров--------------------
 var main = require('./routes/index');
@@ -10,8 +11,8 @@ var api = require('./routes/api');
 var reg = require('./routes/reg');
 var pp=require('./routes/PersonalPage.js')
 //---------------------------
-const fs = require('fs');
-const conf=JSON.parse(fs.readFileSync('config.json'));
+/*const fs = require('fs');
+const conf=JSON.parse(fs.readFileSync('config.json'));*/
 //---------------------------
 const bodyParser = require("body-parser");
 app.use(bodyParser.json())
