@@ -5,7 +5,10 @@ var app=express();
 //-------SQL--------------------
 const mysql = require("mysql2");
 //-------config.json--------------------
-var conf=require('config_local');
+const fs = require('fs');
+const conf=JSON.parse(fs.readFileSync('config.json'));
+
+exports.conf=conf;
 //---------------------------
 var P_END=(pool)=>{
   pool.end((err)=>{
