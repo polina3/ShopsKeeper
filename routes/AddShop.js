@@ -16,6 +16,15 @@ var P_END=(pool)=>{
   });
 }
 //---------------------------
+var isEmail=(req,res, next)=>{
+  if((req.session.email=='') || (typeof req.session.email == undefined)){
+    res.redirect('/');
+  }
+  else{
+    return next();
+  }
+}
+//---------------------------
 const pool = mysql.createPool({
     connectionLimit: 500,
     queueLimit:300,
@@ -29,11 +38,7 @@ const pool = mysql.createPool({
 //---------------------------
 
 router.get('/', function (req, res) {
-  console.log(req.session.email);
-  pool.execute(conf.qBD.Shop,[req.session.email])
-  .then((result)=>{
-    res.render("PersonalPage",{login:req.session.email,shops:[4,5]});
-  })
+ 
 });
 
 module.exports = router;
