@@ -10,7 +10,7 @@
   "author": "Polli",
   "license": "ISC",
   "dependencies": {
-    "config": "file:../../config",
+    "config_local": "file:///var/www/config_local",
     "cookie-parser": "^1.4.4",
     "express": "^4.17.1",
     "express-session": "^1.17.0",

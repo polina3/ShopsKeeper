@@ -3,7 +3,7 @@ const express = require('express');
 const session = require('express-session');
 var SessionStore = require('express-mysql-session');
 var router = express.Router();
-var conf=require('config');
+var conf=require('config_local');
 var app=express();
 //-------подключение роутеров--------------------
 var main = require('./routes/index');
