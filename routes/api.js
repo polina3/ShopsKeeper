@@ -67,10 +67,12 @@ router.post("/password",(req,res)=>{
 	 pool.execute(conf.qBD.q2,rez)
    .then((results)=>{
     if(results.length==0){
+      console.log("password:-")
         r.response=false;
       }
       else{
-        r.response=true;
+        console.log("password:+");
+        r.response=results[0];
       }
    })
    .then(()=>{
