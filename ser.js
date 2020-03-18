@@ -49,7 +49,7 @@ app.use('/', main);
 app.use('/api', api);
 app.use('/reg',reg);
 app.use('/PersonalPage',isEmail,pp);
-
+app.use('/AddShop',isEmail,pp);
 
 console.log("server run");
 
