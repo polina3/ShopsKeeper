@@ -13,6 +13,7 @@ var main = require('./routes/index');
 var api = require('./routes/api');
 var reg = require('./routes/reg');
 var pp=require('./routes/PersonalPage.js')
+var ad=require('./routes/AddShop.js')
 //---------------------------
 const bodyParser = require("body-parser");
 app.use(bodyParser.json())

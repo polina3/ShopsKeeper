@@ -8,25 +8,7 @@ const mysql = require("mysql2");
 const fs = require('fs');
 const conf=JSON.parse(fs.readFileSync('config.json'));
 
-exports.conf=conf;
-//---------------------------
-var P_END=(pool)=>{
-  pool.end((err)=>{
-    if (err) {
-      console.log(err.message);
-    }
-    console.log("пул закрыт");
-  });
-}
-//---------------------------
-var isEmail=(req,res, next)=>{
-  if((req.session.email=='') || (typeof req.session.email == undefined)){
-    res.redirect('/');
-  }
-  else{
-    return next();
-  }
-}
+
 //---------------------------
 const pool = mysql.createPool({
     connectionLimit: 500,
