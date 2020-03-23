@@ -35,7 +35,13 @@ router.post('/', function (req, res) {
   req.body.instagram,
   req.body.facebook,
   req.body.WEBSITE,
-  req.file.originalname,
   req.body.name];
+  let filedata = req.file;
+    console.log(filedata);
+    if(!filedata)
+        res.send("Ошибка при загрузке файла");
+    else
+        res.send("Файл загружен");
 });
+console.log(a);
 module.exports = router;
