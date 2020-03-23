@@ -8,6 +8,9 @@ const conf=JSON.parse(fs.readFileSync('config.json'));
 
 exports.conf=conf;
 var app=express();
+//-------загрузка файлов--------------------
+const multer  = require("multer");
+app.use(multer({dest:"uploads"}).single("filedata"));
 //-------подключение роутеров--------------------
 var main = require('./routes/index');
 var api = require('./routes/api');

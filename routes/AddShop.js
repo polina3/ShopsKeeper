@@ -2,9 +2,7 @@
 const express = require('express');
 var router = express.Router();
 var app=express();
-//-------загрузка файлов--------------------
-const multer  = require("multer");
-app.use(multer({dest:"uploads"}).single("filedata"));
+
 //-------SQL--------------------
 const mysql = require("mysql2");
 //-------config.json--------------------
