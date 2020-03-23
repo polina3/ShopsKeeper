@@ -2,6 +2,9 @@
 const express = require('express');
 var router = express.Router();
 var app=express();
+//-------загрузка файлов--------------------
+const multer  = require("multer");
+app.use(multer({dest:"uploads"}).single("filedata"));
 //-------SQL--------------------
 const mysql = require("mysql2");
 //-------config.json--------------------
@@ -25,5 +28,14 @@ const pool = mysql.createPool({
 router.get('/', function (req, res) {
   res.render("AddShop",{});
 });
-
+router.post('/', function (req, res) {
+  a=[req.session.email,
+  req.body.type,
+  req.body.descrintion,
+  req.body.instagram,
+  req.body.facebook,
+  req.body.WEBSITE,
+  req.file.originalname,
+  req.body.name];
+});
 module.exports = router;
