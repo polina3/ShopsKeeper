@@ -42,6 +42,7 @@ router.post('/', function (req, res) {
         res.send("Ошибка при загрузке файла");
     else
         res.send("Файл загружен");
+   console.log(a);
 });
-console.log(a);
+
 module.exports = router;
