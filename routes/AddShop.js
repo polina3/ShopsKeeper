@@ -26,7 +26,7 @@ const pool = mysql.createPool({
 router.get('/', function (req, res) {
   res.render("AddShop",{});
 });
-router.post('/', upload.single("filedata"), function (req, ,res) {
+router.post('/', upload.single("filedata"), function (req ,res) {
   a=[req.session.email,
   req.body.type,
   req.body.descrintion,
