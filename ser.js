@@ -8,6 +8,7 @@ const conf=JSON.parse(fs.readFileSync('config.json'));
 
 exports.conf=conf;
 var app=express();
+
 //-------подключение роутеров--------------------
 var main = require('./routes/index');
 var api = require('./routes/api');
