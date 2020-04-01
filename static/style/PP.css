@@ -28,6 +28,7 @@ main{
 	height: 90vh;
 }
 main h1{
+	margin: 10px;
 	color:#E66400;
 }
 .shop{
