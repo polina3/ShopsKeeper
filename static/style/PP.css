@@ -28,11 +28,11 @@ main{
 	height: 90vh;
 }
 main h1{
-	margin: 10px;
+	margin: 0 auto;
 	color:#E66400;
 }
 .shop{
-	margin: 0 auto;
+	
 	width: 80%;
 	border-bottom:1px #E66400 solid; 
 }
