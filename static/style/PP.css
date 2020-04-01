@@ -3,6 +3,8 @@ body{
 	margin: 0;
 }
 a{
+	font-style: 25pt;
+	color:#fff;
 	text-decoration: none;
 }
 .con{
@@ -26,8 +28,8 @@ main{
 	height: 90vh;
 }
 .shop{
-	margin: 20px;
-	width: 100%;
+	margin: 0 auto;
+	width: 80%;
 	border-bottom:1px #E66400 solid; 
 }
 .shop a{
