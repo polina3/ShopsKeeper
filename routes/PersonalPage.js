@@ -7,7 +7,6 @@ const mysql = require("mysql2");
 //-------config.json--------------------
 const fs = require('fs');
 const conf=JSON.parse(fs.readFileSync('config.json'));
-
 exports.conf=conf;
 //---------------------------
 var P_END=(pool)=>{
@@ -23,7 +22,6 @@ const pool = mysql.createPool({
     connectionLimit: 500,
     queueLimit:300,
     waitForConnections:true,
-
     host: conf.connectionBD.host,
     user: conf.connectionBD.user,
     database: conf.connectionBD.database,

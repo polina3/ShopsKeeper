@@ -10,9 +10,7 @@
 	<a href="http://45.67.57.219:3000/AddShop">Добавить новый мгазин</a>
 	<ul>
 		each val in shops
-			li= val['name_shop']
-		else
-			li There are no values
+			a(href=val['name_shop'])=val['name_shop']
 	</ul>
 </body>
 </html>
