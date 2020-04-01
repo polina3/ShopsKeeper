@@ -9,6 +9,8 @@ const fs = require('fs');
 const conf=JSON.parse(fs.readFileSync('config.json'));
 
 exports.conf=conf;
+
+app.use("/static",express.static('static'));
 //---------------------------
 var P_END=(pool)=>{
   pool.end((err)=>{
