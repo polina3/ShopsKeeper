@@ -26,7 +26,10 @@ main{
 	height: 90vh;
 }
 .shop{
+	margin: 20px;
 	width: 100%;
-	color:#E66400;
 	border-bottom:1px #E66400 solid; 
+}
+.shop a{
+	color:#E66400;
 }
