@@ -33,7 +33,7 @@ const pool = mysql.createPool({
 //---------------------------
 
 router.get('/:s', function (req, res) {
-     res.send("shop: " + request.params["s"])
+     res.send("shop: " + req.params["s"])
 });
 
 module.exports = router;
