@@ -4,13 +4,22 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
+	<link rel="stylesheet" href="/static/style/PP.css">
 </head>
 <body>
-	<h1>#{login}</h1>
-	<a href="http://45.67.57.219:3000/AddShop">Добавить новый мгазин</a>
-	<ul>
-		each val in shops
-			a(href=val['name_shop'])=val['name_shop']
-	</ul>
+	<div class="con">
+		<header>
+			<h1>#{login}</h1>
+			<a href="http://45.67.57.219:3000/AddShop">Добавить новый мгазин</a>
+		</header>
+		<main>
+			each val in shops
+				div(class="shop")
+					a(href=val['name_shop'])=val['name_shop']
+		</main>
+		
+			
+		
+	</div>
 </body>
 </html>
