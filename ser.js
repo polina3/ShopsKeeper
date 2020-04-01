@@ -53,7 +53,7 @@ app.use('/api', api);
 app.use('/reg',reg);
 app.use('/PersonalPage',isEmail,pp);
 app.use('/AddShop',isEmail,ad);
-app.use('/shop/:s',isEmail,shop);
+app.use('/shop',isEmail,shop);
 console.log("server run");
 
 
