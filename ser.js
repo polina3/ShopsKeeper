@@ -15,6 +15,7 @@ var api = require('./routes/api');
 var reg = require('./routes/reg');
 var pp=require('./routes/PersonalPage.js')
 var ad=require('./routes/AddShop.js')
+var shop=require('./routes/shop.js')
 //---------------------------
 const bodyParser = require("body-parser");
 app.use(bodyParser.json())
@@ -52,7 +53,7 @@ app.use('/api', api);
 app.use('/reg',reg);
 app.use('/PersonalPage',isEmail,pp);
 app.use('/AddShop',isEmail,ad);
-
+app.use('/shop',isEmail,shop);
 console.log("server run");
 
 
