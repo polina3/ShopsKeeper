@@ -28,8 +28,20 @@ h1{
 main{
 	width: 100%;
 	height: 90vh;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: center;
 }
 main h1{
 	margin: 10px;
+	color:#E66400;
+}
+.product{
+	width: 250px;
+	height: 250px;
+	border: #E66400;
+}
+.product a{
 	color:#E66400;
 }
