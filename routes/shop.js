@@ -11,21 +11,10 @@ const conf=JSON.parse(fs.readFileSync('config.json'));
 exports.conf=conf;
 
 //---------------------------
-var P_END=(pool)=>{
-  pool.end((err)=>{
-    if (err) {
-      console.log(err.message);
-    }
-    console.log("пул закрыт");
-  });
-}
-
-//---------------------------
 const pool = mysql.createPool({
     connectionLimit: 500,
     queueLimit:300,
     waitForConnections:true,
-
     host: conf.connectionBD.host,
     user: conf.connectionBD.user,
     database: conf.connectionBD.database,

@@ -33,14 +33,22 @@ router.post('/', upload.single("filedata"), function (req ,res) {
   req.body.instagram,
   req.body.facebook,
   req.body.WEBSITE,
-  req.body.name];
-  let filedata = req.file;
+  "-"];
+ /* let filedata = req.file;
     console.log(filedata);
     if(!filedata)
         res.send("Ошибка при загрузке файла");
     else
         res.send("Файл загружен");
-   console.log(a);
+   console.log(a);*/
+    pool.execute(conf.qBD.AddShop,a)
+        .then(() =>{
+         res.redirect('/PersonalPage');
+       })
+       .catch((err)=>{
+            console.log(err);
+            return res.send("error");
+       })
 });
 
 module.exports = router;

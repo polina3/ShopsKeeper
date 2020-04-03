@@ -23,7 +23,7 @@ const pool = mysql.createPool({
 //---------------------------
 
 router.get('/', function (req, res) {
-  res.render("AddShop",{});
+  res.render("AddProduct",{});
 });
 
 module.exports = router;

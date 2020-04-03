@@ -58,7 +58,7 @@ router.post('/', function (req, res) {
            console.log(a);
         pool.execute(conf.qBD.C_U,a)
         .then(() =>{
-         res.redirect('45.67.57.219:3000/');
+         res.redirect('/');
        })
        .catch((err)=>{
             console.log(err);
