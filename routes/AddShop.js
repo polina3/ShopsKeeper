@@ -39,8 +39,8 @@ router.post('/', upload.single("filedata"), function (req ,res) {
     if(!filedata)
         res.send("Ошибка при загрузке файла");
     else
-        res.send("Файл загружен");
-   console.log(a);*/
+        res.send("Файл загружен");*/
+   console.log(a);
     pool.execute(conf.qBD.AddShop,a)
         .then(() =>{
          res.redirect('/PersonalPage');
