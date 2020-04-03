@@ -14,7 +14,9 @@
 			<a href="">Настроить</a>
 		</header>
 		<main>
-			
+			each val in product
+				div(class="product")
+					a(href="shop/"+val['id'])=val['name']
 		</main>
 	</div>
 </body>

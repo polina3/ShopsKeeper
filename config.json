@@ -5,7 +5,8 @@
         "q2" : "SELECT * FROM User where email=? and password=?",
         "C_U":"INSERT INTO `User` (`email`, `password`, `phone`, `second_name`, `name`, `third_name`, `date of birth`, `gender`, `buy`) VALUES(?,?,?,?,?,?,?,?,b'0');",
         "Shop":"SELECT * FROM `Shop` LEFT OUTER JOIN `User` on Shop.email=User.email where User.email=?",
-        "AddShop":"INSERT INTO `Shop` (`id`, `email`, `type`, `descrintion`, `like_shop`, `instagram`, `facebook`, `WEBSITE`, `LOGO`, `name_shop`) VALUES ('0', ?, ?, ?, 0, ?, ?, ?, ?, ?);"
+        "AddShop":"INSERT INTO `Shop` (`id`, `email`, `type`, `descrintion`, `like_shop`, `instagram`, `facebook`, `WEBSITE`, `LOGO`, `name_shop`) VALUES ('0', ?, ?, ?, 0, ?, ?, ?, ?, ?);",
+        "Product":"SELECT `name` from `Product` where id_shop=?"
     },
     
     "connectionBD":
