@@ -40,7 +40,7 @@ main h1{
 .product{
 	width: 250px;
 	height: 250px;
-	border: #E66400;
+	border: 1px #E66400 solid;
 }
 .product a{
 	color:#E66400;
