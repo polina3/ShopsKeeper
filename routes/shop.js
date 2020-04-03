@@ -27,6 +27,7 @@ router.get('/:s', function (req, res) {
   	pool.execute(conf.qBD.Product,[req.params["s"]])
   .then((result)=>{
     res.render("shop",{name:req.params["s"],product:result[0]})
-});
+})
+})
 
 module.exports = router;
