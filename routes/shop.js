@@ -24,7 +24,7 @@ const pool = mysql.createPool({
 
 router.get('/:s', function (req, res) {
      
-  	pool.execute(conf.qBD.Product,[name:req.params["s"]])
+  	pool.execute(conf.qBD.Product,[req.params["s"]])
   .then((result)=>{
     res.render("shop",{name:req.params["s"],product:result[0]})
 });
