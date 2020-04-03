@@ -25,5 +25,8 @@ const pool = mysql.createPool({
 router.get('/', function (req, res) {
   res.render("AddProduct",{});
 });
+router.post('/', function (req, res) {
+  res.render("AddProduct",{});
+});
 
 module.exports = router;
