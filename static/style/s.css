@@ -41,7 +41,12 @@ main h1{
 	width: 250px;
 	height: 250px;
 	border: 1px #E66400 solid;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 .product a{
 	color:#E66400;
+	font-size: 20pt;
+
 }
