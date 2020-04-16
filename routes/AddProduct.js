@@ -25,8 +25,20 @@ const pool = mysql.createPool({
 router.get('/', function (req, res) {
   res.render("AddProduct",{});
 });
-router.post('/', function (req, res) {
-  res.render("AddProduct",{});
+router.post('/:i', function (req, res) {
+	  a=[req.session.name,
+  req.body.descrintion,
+
+  "-"];
+  pool.execute(conf.qBD.AddProduct,a)
+        .then(() =>{
+         res.render("AddProduct",{});
+       })
+       .catch((err)=>{
+            console.log(err);
+            return res.send("error");
+       })
+  
 });
 
 module.exports = router;
