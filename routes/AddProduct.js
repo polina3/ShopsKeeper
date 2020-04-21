@@ -22,17 +22,15 @@ const pool = mysql.createPool({
 }).promise();
 //---------------------------
 
-router.get('/', function (req, res) {
+router.get('/:i', function (req, res) {
   res.render("AddProduct",{});
 });
 router.post('/:i', function (req, res) {
-	  a=[req.session.name,
-  req.body.descrintion,
-
-  "-"];
+	  a=[req.session.name,req.body.descrintion,i];
   pool.execute(conf.qBD.AddProduct,a)
         .then(() =>{
          res.render("AddProduct",{});
+         res.redirect('shop/'+i);
        })
        .catch((err)=>{
             console.log(err);
