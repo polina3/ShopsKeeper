@@ -26,11 +26,11 @@ router.get('/:i', function (req, res) {
   res.render("AddProduct",{});
 });
 router.post('/:i', function (req, res) {
-	  a=[req.session.name,req.body.descrintion,i];
+	  a=[req.session.name,req.body.descrintion,req.params["i"]];
   pool.execute(conf.qBD.AddProduct,a)
         .then(() =>{
          res.render("AddProduct",{});
-         res.redirect('shop/'+i);
+         res.redirect('shop/'+req.params["i"]);
        })
        .catch((err)=>{
             console.log(err);
