@@ -30,8 +30,9 @@ router.post('/:i', function (req, res) {
   pool.execute(conf.qBD.AddProduct,a)
         .then(() =>{
          res.render("AddProduct",{});
-         res.redirect('shop/'+req.params["i"]);
+         
        })
+        .then(()=>res.redirect('shop/'+req.params["i"]))
        .catch((err)=>{
             console.log(err);
             return res.send("error");
