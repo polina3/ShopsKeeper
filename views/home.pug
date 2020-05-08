@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="/static/style/PP.css">
+</head>
+<body>
+	<div class="con">
+		<header>
+			<h1>#{login}</h1>
+			<a href="AddShop">Добавить новый мгазин</a>
+		</header>
+		<main>
+			<h1 align="center">Cписок магазинов</h1>
+			each val in shops
+				div(class="shop")
+					a(href="shop/"+val['id'])=val['name_shop']
+		</main>
+		
+			
+		
+	</div>
+</body>
+</html>
