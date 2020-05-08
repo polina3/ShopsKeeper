@@ -17,7 +17,7 @@ var pp=require('./routes/PersonalPage.js');
 var ad=require('./routes/AddShop.js');
 var shop=require('./routes/shop.js');
 var ap=require('./routes/AddProduct.js');
-var home=require('./routes/home.js');
+var home=require('./routes/index.js');
 //---------------------------
 const bodyParser = require("body-parser");
 app.use(bodyParser.json())
