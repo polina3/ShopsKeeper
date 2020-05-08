@@ -18,7 +18,7 @@ const pool = mysql.createPool({
     user: conf.connectionBD.user,
     database: conf.connectionBD.database,
     password: conf.connectionBD.password
-});
+}).promise();
 //---------------------------
 router.get('/', function (req, res) {
      pool.execute(conf.qBD.HomeGet)
