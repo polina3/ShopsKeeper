@@ -17,6 +17,7 @@ var pp=require('./routes/PersonalPage.js');
 var ad=require('./routes/AddShop.js');
 var shop=require('./routes/shop.js');
 var ap=require('./routes/AddProduct.js');
+var home=require('./routes/home.js');
 //---------------------------
 const bodyParser = require("body-parser");
 app.use(bodyParser.json())
@@ -49,7 +50,7 @@ app.use(session({
 app.use("/static",express.static('static'));
 app.set("view engine", "pug");
 //---------------------------
-//app.use('/', home);
+app.use('/', home);
 app.use('/AV', AV);
 app.use('/api', api);
 app.use('/reg',reg);
