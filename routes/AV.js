@@ -9,16 +9,7 @@ const fs = require('fs');
 const conf=JSON.parse(fs.readFileSync('config.json'));
 
 
-//---------------------------
-var P_END=(pool)=>{
-  pool.end((err)=>{
-    if (err) {
-      console.log(err.message);
-    }
-    console.log("пул закрыт");
-  });
-}
-//---------------------------
+//---------------------
 var isEmail=(req,res, next)=>{
   if(typeof req.session.email === 'undefined' || req.session.email === null){
     res.redirect('/');

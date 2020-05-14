@@ -10,14 +10,15 @@ exports.conf=conf;
 var app=express();
 
 //-------подключение роутеров--------------------
-var AV = require('./routes/AV');
-var api = require('./routes/api');
-var reg = require('./routes/reg');
+var AV = require('./routes/AV.js');
+var api = require('./routes/api.js');
+var reg = require('./routes/reg.js');
 var pp=require('./routes/PersonalPage.js');
 var ad=require('./routes/AddShop.js');
 var shop=require('./routes/shop.js');
 var ap=require('./routes/AddProduct.js');
 var home=require('./routes/index.js');
+var Statistics=require('./routes/Statistics.js');
 //---------------------------
 const bodyParser = require("body-parser");
 app.use(bodyParser.json())
