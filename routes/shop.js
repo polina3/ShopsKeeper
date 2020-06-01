@@ -26,7 +26,8 @@ router.get('/:s', function (req, res) {
   	pool.execute(conf.qBD.Product,[req.params["s"]])
   .then((result)=>{
   	console.log(result[0]);
-    res.render("shop",{name:req.params["s"],product:result[0]})
+    var p=result[0]
+    res.render("shop",{name:req.params["s"],product:p})
 })
 })
 
