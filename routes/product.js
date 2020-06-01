@@ -21,7 +21,6 @@ const pool = mysql.createPool({
     password: conf.connectionBD.password
 }).promise();
 //---------------------------
-
 router.get('/:s', function (req, res) {
   	pool.execute(conf.qBD.Product,[req.params["s"]])
   .then((result)=>{
