@@ -20,7 +20,7 @@ const pool = mysql.createPool({
     password: conf.connectionBD.password
 }).promise();
 //---------------------------
-app.use('/product',product);
+router.use('/product',product);
 
 router.get('/:s', function (req, res) {
      
