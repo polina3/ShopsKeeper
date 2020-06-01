@@ -19,6 +19,7 @@ var shop=require('./routes/shop.js');
 var ap=require('./routes/AddProduct.js');
 var home=require('./routes/index.js');
 var Statistics=require('./routes/Statistics.js');
+var producct=require('./routes/product.js')
 //---------------------------
 const bodyParser = require("body-parser");
 app.use(bodyParser.json())
