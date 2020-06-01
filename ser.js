@@ -17,7 +17,7 @@ var shop=require('./routes/shop.js');
 var ap=require('./routes/AddProduct.js');
 var home=require('./routes/index.js');
 var Statistics=require('./routes/Statistics.js');
-
+var product=require('./routes/product.js')
 //---------------------------
 const bodyParser = require("body-parser");
 app.use(bodyParser.json())
@@ -58,7 +58,7 @@ app.use('/PersonalPage',isEmail,pp);
 app.use('/AddShop',isEmail,ad);
 app.use('/AddProduct',isEmail,ap);
 app.use('/shop',isEmail,shop);
-app.use('/shop/product/:s',isEmail,shop);
+app.use('/shop/product/:s',product);
 console.log("server run");
 
 
