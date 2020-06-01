@@ -58,6 +58,7 @@ app.use('/PersonalPage',isEmail,pp);
 app.use('/AddShop',isEmail,ad);
 app.use('/AddProduct',isEmail,ap);
 app.use('/shop',isEmail,shop);
+app.use('/shop/product/:s',isEmail,shop);
 console.log("server run");
 
 

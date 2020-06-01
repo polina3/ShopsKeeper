@@ -8,7 +8,6 @@ const mysql = require("mysql2");
 const fs = require('fs');
 const conf=JSON.parse(fs.readFileSync('config.json'));
 
-exports.conf=conf;
 
 //---------------------------
 const pool = mysql.createPool({

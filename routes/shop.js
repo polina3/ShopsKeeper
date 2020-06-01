@@ -8,7 +8,6 @@ const mysql = require("mysql2");
 const fs = require('fs');
 const conf=JSON.parse(fs.readFileSync('config.json'));
 
-var product=require('./routes/product.js')
 //---------------------------
 const pool = mysql.createPool({
     connectionLimit: 500,
@@ -20,7 +19,7 @@ const pool = mysql.createPool({
     password: conf.connectionBD.password
 }).promise();
 //---------------------------
-router.use('/product',product);
+
 
 router.get('/:s', function (req, res) {
      
