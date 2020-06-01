@@ -23,7 +23,8 @@ const pool = mysql.createPool({
 router.get('/', function (req, res) {
      pool.execute(conf.qBD.HomeGet)
       .then((result)=>{
-        res.render("home",{shops:result[0]});
+        console.log(req.session.email);
+        res.render("home",{shops:result[0],av:req.session.email});
       })
 });
 
