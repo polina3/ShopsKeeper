@@ -5,8 +5,6 @@ var SessionStore = require('express-mysql-session');
 var router = express.Router();
 const fs = require('fs');
 const conf=JSON.parse(fs.readFileSync('config.json'));
-
-exports.conf=conf;
 var app=express();
 
 //-------подключение роутеров--------------------
