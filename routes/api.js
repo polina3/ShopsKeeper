@@ -7,8 +7,6 @@ const mysql = require("mysql2");
 //-------config.json--------------------
 const fs = require('fs');
 const conf=JSON.parse(fs.readFileSync('config.json'));
-
-
 //---------------------------
 const pool = mysql.createPool({
     connectionLimit: 500,
@@ -20,15 +18,6 @@ const pool = mysql.createPool({
     database: conf.connectionBD.database,
     password: conf.connectionBD.password
 }).promise();
-//---------------------------
-var P_END=(pool)=>{
-  pool.end((err)=>{
-    if (err) {
-      console.log(err.message);
-    }
-    console.log("пул закрыт");
-  });
-}
 //---------------------------
 var r={
   response:""
@@ -58,9 +47,6 @@ router.post("/email",(req,res)=>{
           res.send(JSON.stringify(r));
       }
    })
-    
-  
-
 });
 router.post("/password",(req,res)=>{
   let rez=[req.body.email,req.body.password];
@@ -105,9 +91,6 @@ catch(err){
   r.response="err";
   return res.send(JSON.stringify(r));
 }
-
- 
-     
    pool.execute(conf.qBD.C_U,a)
    .then((results)=>{
     r.response=true;

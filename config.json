@@ -10,7 +10,9 @@
         "Product":"SELECT `name`,`id` from `Product` where id_shop=?",
         "name_shop":"SELECT * from `Shop` where id=?",
         "AddProduct":"INSERT INTO `Product` (`id`, `name`, `description`, `id_shop`, `Photo`) VALUES ('0', ?, ?, ?, '0');",
-        "ProductGet":"SELECT * from `Product` where id=?"
+        "ProductGet":"SELECT * from `Product` where id=?",
+        "Statistic_V":"SELECT COUNT(*) FROM `Statistics` Where id_shop=? ",
+        "Statistic_D":"SELECT COUNT(*),date FROM `Statistics` Where id_shop=? GROUP BY date"
     },
     
     "connectionBD":
