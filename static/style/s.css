@@ -50,3 +50,9 @@ main h1{
 	font-size: 20pt;
 
 }
+.d{
+	margin: 0 auto;
+	width: 60%;
+	border-bottom:1px #E66400 solid; 
+	color:#E66400;
+}

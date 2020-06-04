@@ -8,12 +8,13 @@
 <body>
 	<div class="con">
 		<header>
-			<h1>Всего заходов: #{V['COUNT(*)']}</h1>
+			each val in V
+				<h1>Всего заходов: #{val['COUNT(*)']}</h1>
 		</header>
 		<main>
 			each val in D
-				div(class="product")
-					span=val['date'] : val['COUNT(*)']
+				div(class="d")
+					<span>#{val['date']} : #{val['COUNT(*)']}<span>
 		</main>
 	</div>
 </body>
