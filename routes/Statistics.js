@@ -28,7 +28,7 @@ router.get('/:s', function (req, res) {
     var r1=result[0]
     pool.execute(conf.qBD.Statistic_D,[req.params["s"]])
     .then((result)=>{
-      res.render("Statistic",{D:result[0],V:r1})
+      res.render("Statistics",{D:result[0],V:r1})
     })
   })
 })
