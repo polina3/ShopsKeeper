@@ -32,3 +32,5 @@ router.get('/:s', function (req, res) {
     })
   })
 })
+
+module.exports = router;
