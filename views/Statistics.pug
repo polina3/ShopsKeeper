@@ -9,12 +9,11 @@
 	<div class="con">
 		<header>
 			<h1>Всего заходов: #{V}</h1>
-			
 		</header>
 		<main>
 			each val in V
 				div(class="product")
-					p=val['date'] : val['COUNT(*)']
+					p val['date'] : val['COUNT(*)']
 		</main>
 	</div>
 </body>

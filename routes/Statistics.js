@@ -28,8 +28,11 @@ router.get('/:s', function (req, res) {
     var r1=result[0]
     pool.execute(conf.qBD.Statistic_D,[req.params["s"]])
     .then((result)=>{
+      console.log(r1);
+      console.log(result[0])
       res.render("Statistics",{D:result[0],V:r1})
     })
+
   })
 })
 
