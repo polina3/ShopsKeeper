@@ -22,14 +22,11 @@ const pool = mysql.createPool({
 var g=0;
 
 router.get('/:s', function (req, res) {
-     
-  	pool.execute(conf.qBD.Product,[req.params["s"]])
-  .then(()=>{
-    pool.execute("SELECT name FOR Shop  WHERE `id` = ?",[req.params["s"]])
+      pool.execute("SELECT name FOR Shop  WHERE `id` = ?",[req.params["s"]])
     .then((result)=>{
       g=result;
     })
-  })
+  	pool.execute(conf.qBD.Product,[req.params["s"]])
   .then((result)=>{
   	console.log(result[0]);
     res.render("shop",{id:req.params["s"],product:result[0],name:g})
