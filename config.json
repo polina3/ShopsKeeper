@@ -12,7 +12,7 @@
         "AddProduct":"INSERT INTO `Product` (`id`, `name`, `description`, `id_shop`, `Photo`) VALUES ('0', ?, ?, ?, '0');",
         "ProductGet":"SELECT * from `Product` where id=?",
         "Statistic_V":"SELECT COUNT(*) FROM `Statistics` Where id_shop=? ",
-        "Statistic_D":"SELECT COUNT(*),date FROM `Statistics` Where id_shop=? GROUP BY date"
+        "Statistic_D":"SELECT COUNT(*),date FROM `Statistics` Where id_shop=? GROUP BY date",
     },
     
     "connectionBD":

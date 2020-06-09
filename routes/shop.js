@@ -19,14 +19,20 @@ const pool = mysql.createPool({
     password: conf.connectionBD.password
 }).promise();
 //---------------------------
-
+var g=0;
 
 router.get('/:s', function (req, res) {
      
   	pool.execute(conf.qBD.Product,[req.params["s"]])
+  .then(()=>{
+    pool.execute("SELECT name FOR Shop  WHERE `id` = ?",[req.params["s"]])
+    .then((result)=>{
+      g=result;
+    })
+  }
   .then((result)=>{
   	console.log(result[0]);
-    res.render("shop",{name:req.params["s"],product:result[0]})
+    res.render("shop",{id:req.params["s"],product:result[0]},name:g)
 })
 })
 

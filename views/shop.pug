@@ -8,8 +8,10 @@
 <body>
 	<div class="con">
 		<header>
-			<h1>#{name}</h1>
 			each val in name
+				div
+					h1=val
+			each val in id
 				div
 					a(href="/AddProduct/"+val) Добавить продукт
 				div
