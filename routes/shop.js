@@ -29,7 +29,7 @@ router.get('/:s', function (req, res) {
     .then((result)=>{
       g=result;
     })
-  }
+  })
   .then((result)=>{
   	console.log(result[0]);
     res.render("shop",{id:req.params["s"],product:result[0]},name:g)
