@@ -60,7 +60,8 @@ app.use('/AddProduct',isEmail,ap);
 app.use('/shop',shop);
 app.use('/product',product);
 app.use('/Statistics',Statistics);
-console.log("server run ");
+console.log("server run   ");
+console.log("test   ");
 
-
+ 
 app.listen(process.env.PORT || conf.port);
