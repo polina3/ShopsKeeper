@@ -61,6 +61,7 @@ app.use('/shop',shop);
 app.use('/product',product);
 app.use('/Statistics',Statistics);
 console.log("server run   ");
-console.log("test   ");
+console.log("");
+
 
 app.listen(process.env.PORT || conf.port);
